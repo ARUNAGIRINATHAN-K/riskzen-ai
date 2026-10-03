@@ -1,0 +1,90 @@
+services:
+  # ──────────────────────────────────────────────
+  # PostgreSQL + pgvector
+  # ──────────────────────────────────────────────
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: riskzen-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-riskzen}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-riskzen_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-riskzen}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-riskzen}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ──────────────────────────────────────────────
+  # FastAPI Backend
+  # ──────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: riskzen-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-riskzen}:${POSTGRES_PASSWORD:-riskzen_dev}@db:5432/${POSTGRES_DB:-riskzen}
+      DATABASE_URL_SYNC: postgresql://${POSTGRES_USER:-riskzen}:${POSTGRES_PASSWORD:-riskzen_dev}@db:5432/${POSTGRES_DB:-riskzen}
+      LLM_PROVIDER: ${LLM_PROVIDER:-ollama}
+      LLM_MODEL: ${LLM_MODEL:-llama3.1}
+      OLLAMA_HOST: ${OLLAMA_HOST:-http://ollama:11434}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:-}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      SYNC_INTERVAL_MINUTES: ${SYNC_INTERVAL_MINUTES:-60}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      API_KEY: ${API_KEY:-riskzen-dev-key}
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    volumes:
+      - ./backend/app:/app/app
+    depends_on:
+      db:
+        condition: service_healthy
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # ──────────────────────────────────────────────
+  # Next.js Frontend
+  # ──────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: riskzen-frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    depends_on:
+      - backend
+    command: npm run dev
+
+  # ──────────────────────────────────────────────
+  # Ollama (Local LLM)
+  # ──────────────────────────────────────────────
+  ollama:
+    image: ollama/ollama:latest
+    container_name: riskzen-ollama
+    restart: unless-stopped
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+
+volumes:
+  postgres_data:
+    driver: local
+  ollama_models:
+    driver: local
