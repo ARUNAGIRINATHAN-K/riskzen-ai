@@ -11,17 +11,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Planned
 
-- Project scaffolding: Docker Compose, FastAPI backend, Next.js frontend
-- PostgreSQL + pgvector database setup
-- Core data model and Alembic migrations
+- Core data model for all 10 entities (Milestones, WorkItems, Dependencies, Teams, RiskEvents, Evidence, Recommendations, Actions, Outcomes, AuditLogs)
 - GitHub connector and CSV budget importer
 - Risk signal detection engine (7 categories)
 - LangGraph agent investigation workflow
-- Project health dashboard
-- Risk detail page with evidence and recommendations
-- Human approval controls (approve / modify / dismiss / snooze)
-- Action tracking and outcome feedback
-- Audit trail
+- Project health dashboard and UI screens
+
+---
+
+## [0.0.2] — 2026-10-04 (Phase 0: Project Setup & Validation)
+
+### Added
+
+- **Backend Architecture & Tooling**: Configured FastAPI monorepo structure, `pyproject.toml` with Ruff, Pytest, and async test fixtures (`conftest.py`).
+- **Database & Migrations**: Configured Alembic with async SQLAlchemy support and initial migration `001_initial_schema.py` enabling the `pgvector` extension and establishing the `projects` and `data_sources` tables.
+- **Observability & Health Checks**: Integrated `structlog` structured logging with console and JSON formatters. Enhanced `GET /health` and `GET /api/v1/health` endpoints with dynamic PostgreSQL connection checks and pgvector availability status.
+- **Frontend Scaffolding**: Established Next.js TypeScript App Router layout with utility modules (`api-client.ts`, `utils.ts`) and TypeScript domain types (`project.ts`, `risk.ts`, `common.ts`).
+- **Risk Taxonomy Research**: Published `docs/risk-taxonomy.md` defining 8 validated software project risk categories, observable leading indicators, PM literature citations, telemetry mappings, and severity triggers.
+- **Realistic Seed Dataset**: Implemented `app/seed.py` simulating a 7-person team ("NovaPay Mobile Checkout") with deliberate risk patterns (milestone slip, cascading dependency blocks, developer bottleneck, stalled PRs, scope creep).
 
 ---
 

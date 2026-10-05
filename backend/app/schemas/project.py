@@ -1,0 +1,56 @@
+import uuid
+from datetime import datetime
+from typing import Any, Optional
+from pydantic import BaseModel, ConfigDict, Field
+
+
+# ── Data Source Schemas ──
+
+class DataSourceBase(BaseModel):
+    source_type: str = Field(..., description="Source type, e.g. 'github', 'csv_budget'")
+    config: dict[str, Any] = Field(default_factory=dict, description="Connection parameters")
+
+
+class DataSourceCreate(DataSourceBase):
+    pass
+
+
+class DataSourceResponse(DataSourceBase):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: uuid.UUID
+    project_id: uuid.UUID
+    status: str
+    last_synced_at: Optional[datetime] = None
+    created_at: datetime
+
+
+# ── Project Schemas ──
+
+class ProjectBase(BaseModel):
+    name: str = Field(..., min_length=1, max_length=255, description="Project name")
+    description: Optional[str] = Field(None, description="Detailed project description")
+    project_type: str = Field(default="software", max_length=50, description="Project domain type")
+
+
+class ProjectCreate(ProjectBase):
+    pass
+
+
+class ProjectUpdate(BaseModel):
+    name: Optional[str] = Field(None, min_length=1, max_length=255)
+    description: Optional[str] = None
+    project_type: Optional[str] = None
+    status: Optional[str] = Field(None, description="active, paused, archived")
+    health: Optional[str] = Field(None, description="green, yellow, orange, red")
+
+
+class ProjectResponse(ProjectBase):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: uuid.UUID
+    status: str
+    health: str
+    created_at: datetime
+    updated_at: datetime
+    data_sources: list[DataSourceResponse] = Field(default_factory=list)

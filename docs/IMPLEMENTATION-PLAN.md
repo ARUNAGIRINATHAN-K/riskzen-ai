@@ -42,12 +42,12 @@ Pilot: **8 weeks** (Jan 05 – Feb 27)
 
 | # | Task | Status |
 |---|---|---|
-| 0.1 | Initialize monorepo structure (see directory layout below) | ☐ |
-| 0.2 | Create `docker-compose.yml` with PostgreSQL + pgvector | ☐ |
-| 0.3 | Scaffold FastAPI backend with project structure | ☐ |
-| 0.4 | Scaffold Next.js frontend with TypeScript + Tailwind + shadcn/ui | ☐ |
-| 0.5 | Verify Docker Compose starts all services cleanly | ☐ |
-| 0.6 | Configure `.env.example` with all required environment variables | ☐ |
+| 0.1 | Initialize monorepo structure (see directory layout below) | ☑ |
+| 0.2 | Create `docker-compose.yml` with PostgreSQL + pgvector | ☑ |
+| 0.3 | Scaffold FastAPI backend with project structure | ☑ |
+| 0.4 | Scaffold Next.js frontend with TypeScript + Tailwind + shadcn/ui | ☑ |
+| 0.5 | Verify Docker Compose starts all services cleanly | ☑ |
+| 0.6 | Configure `.env.example` with all required environment variables | ☑ |
 
 #### Target directory layout
 
@@ -93,11 +93,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 0.7 | Install and configure Alembic for migrations | ☐ |
-| 0.8 | Enable `pgvector` extension in PostgreSQL | ☐ |
-| 0.9 | Create initial migration: `projects` table | ☐ |
-| 0.10 | Create health-check endpoint `GET /api/health` | ☐ |
-| 0.11 | Verify backend connects to PostgreSQL through Docker Compose | ☐ |
+| 0.7 | Install and configure Alembic for migrations | ☑ |
+| 0.8 | Enable `pgvector` extension in PostgreSQL | ☑ |
+| 0.9 | Create initial migration: `projects` table | ☑ |
+| 0.10 | Create health-check endpoint `GET /api/health` | ☑ |
+| 0.11 | Verify backend connects to PostgreSQL through Docker Compose | ☑ |
 
 ---
 
@@ -105,11 +105,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 0.12 | Configure linting: `ruff` (backend), `eslint` + `prettier` (frontend) | ☐ |
-| 0.13 | Configure `pytest` with test database fixture | ☐ |
-| 0.14 | Set up structured logging with `structlog` | ☐ |
-| 0.15 | Create `Makefile` or script commands: `dev`, `test`, `migrate`, `lint` | ☐ |
-| 0.16 | Add `.gitignore` covering Python, Node, Docker, IDE files | ☐ |
+| 0.12 | Configure linting: `ruff` (backend), `eslint` + `prettier` (frontend) | ☑ |
+| 0.13 | Configure `pytest` with test database fixture | ☑ |
+| 0.14 | Set up structured logging with `structlog` | ☑ |
+| 0.15 | Create `Makefile` or script commands: `dev`, `test`, `migrate`, `lint` | ☑ |
+| 0.16 | Add `.gitignore` covering Python, Node, Docker, IDE files | ☑ |
 
 ---
 
@@ -117,10 +117,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 0.17 | Research 5–10 recurring software-project risk patterns from PM literature | ☐ |
-| 0.18 | For each pattern, identify observable leading indicators | ☐ |
-| 0.19 | Map each indicator to a data source (GitHub issues, PRs, milestones, CSV) | ☐ |
-| 0.20 | Document the validated risk taxonomy in `docs/risk-taxonomy.md` | ☐ |
+| 0.17 | Research 5–10 recurring software-project risk patterns from PM literature | ☑ |
+| 0.18 | For each pattern, identify observable leading indicators | ☑ |
+| 0.19 | Map each indicator to a data source (GitHub issues, PRs, milestones, CSV) | ☑ |
+| 0.20 | Document the validated risk taxonomy in `docs/risk-taxonomy.md` | ☑ |
 
 ---
 
@@ -128,21 +128,21 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 0.21 | Design a realistic seed dataset simulating a 7-person software project | ☐ |
-| 0.22 | Create seed script: projects, milestones, work items, dependencies | ☐ |
-| 0.23 | Include deliberate risk patterns in seed data (blocked tasks, overdue deps) | ☐ |
-| 0.24 | Verify seed data loads correctly and can be queried | ☐ |
-| 0.25 | Write Phase 0 completion checklist and commit | ☐ |
+| 0.21 | Design a realistic seed dataset simulating a 7-person software project | ☑ |
+| 0.22 | Create seed script: projects, milestones, work items, dependencies | ☑ |
+| 0.23 | Include deliberate risk patterns in seed data (blocked tasks, overdue deps) | ☑ |
+| 0.24 | Verify seed data loads correctly and can be queried | ☑ |
+| 0.25 | Write Phase 0 completion checklist and commit | ☑ |
 
 ---
 
 ### Phase 0 — Exit Criteria
 
-- [ ] Docker Compose brings up PostgreSQL + pgvector + FastAPI + Next.js
-- [ ] Health endpoint responds `200 OK`
-- [ ] At least 3 risk patterns have identified leading indicators mapped to data sources
-- [ ] Seed data loads and is queryable
-- [ ] Repository structure matches the target layout
+- [x] Docker Compose brings up PostgreSQL + pgvector + FastAPI + Next.js
+- [x] Health endpoint responds `200 OK`
+- [x] At least 3 risk patterns have identified leading indicators mapped to data sources
+- [x] Seed data loads and is queryable
+- [x] Repository structure matches the target layout
 
 ---
 
