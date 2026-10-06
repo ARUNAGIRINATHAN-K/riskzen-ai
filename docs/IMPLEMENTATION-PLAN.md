@@ -161,12 +161,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.1 | Create SQLAlchemy models: `Project`, `Milestone`, `WorkItem` | ☐ |
-| 1.2 | Create SQLAlchemy models: `Dependency`, `Team`, `TeamMember` | ☐ |
-| 1.3 | Create SQLAlchemy models: `RiskEvent`, `Evidence` | ☐ |
-| 1.4 | Create SQLAlchemy models: `Recommendation`, `Action`, `Outcome` | ☐ |
-| 1.5 | Create SQLAlchemy model: `AuditLog` | ☐ |
-| 1.6 | Generate and run Alembic migration for all tables | ☐ |
+| 1.1 | Create SQLAlchemy models: `Project`, `Milestone`, `WorkItem` | ☑ |
+| 1.2 | Create SQLAlchemy models: `Dependency`, `Team`, `TeamMember` | ☑ |
+| 1.3 | Create SQLAlchemy models: `RiskEvent`, `Evidence` | ☑ |
+| 1.4 | Create SQLAlchemy models: `Recommendation`, `Action`, `Outcome` | ☑ |
+| 1.5 | Create SQLAlchemy model: `AuditLog` | ☑ |
+| 1.6 | Generate and run Alembic migration for all tables | ☑ |
 
 ---
 
@@ -174,9 +174,9 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.7 | Create Pydantic request/response schemas for all entities | ☐ |
-| 1.8 | Implement base CRUD service layer (create, read, update, list) | ☐ |
-| 1.9 | Write unit tests for Project CRUD operations | ☐ |
+| 1.7 | Create Pydantic request/response schemas for all entities | ☑ |
+| 1.8 | Implement base CRUD service layer (create, read, update, list) | ☑ |
+| 1.9 | Write unit tests for Project CRUD operations | ☑ |
 
 ---
 
@@ -184,12 +184,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.10 | `POST /api/projects` — create project | ☐ |
-| 1.11 | `GET /api/projects` — list projects | ☐ |
-| 1.12 | `GET /api/projects/{id}` — project detail with summary stats | ☐ |
-| 1.13 | `PATCH /api/projects/{id}` — update project status | ☐ |
-| 1.14 | `GET /api/projects/{id}/summary` — work item / milestone / dependency counts | ☐ |
-| 1.15 | Write API tests for project endpoints | ☐ |
+| 1.10 | `POST /api/projects` — create project | ☑ |
+| 1.11 | `GET /api/projects` — list projects | ☑ |
+| 1.12 | `GET /api/projects/{id}` — project detail with summary stats | ☑ |
+| 1.13 | `PATCH /api/projects/{id}` — update project status | ☑ |
+| 1.14 | `GET /api/projects/{id}/summary` — work item / milestone / dependency counts | ☑ |
+| 1.15 | Write API tests for project endpoints | ☑ |
 
 ---
 
@@ -197,12 +197,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.16 | Design `BaseConnector` abstract class with `connect()`, `sync()`, `status()` | ☐ |
-| 1.17 | Define `ConnectorConfig` schema (type, credentials, sync interval) | ☐ |
-| 1.18 | Create `DataSource` model (project_id, type, config, last_synced, status) | ☐ |
-| 1.19 | `POST /api/projects/{id}/sources` — register a data source | ☐ |
-| 1.20 | `GET /api/projects/{id}/sources` — list connected sources with status | ☐ |
-| 1.21 | Write connector abstraction tests | ☐ |
+| 1.16 | Design `BaseConnector` abstract class with `connect()`, `sync()`, `status()` | ☑ |
+| 1.17 | Define `ConnectorConfig` schema (type, credentials, sync interval) | ☑ |
+| 1.18 | Create `DataSource` model (project_id, type, config, last_synced, status) | ☑ |
+| 1.19 | `POST /api/projects/{id}/sources` — register a data source | ☑ |
+| 1.20 | `GET /api/projects/{id}/sources` — list connected sources with status | ☑ |
+| 1.21 | Write connector abstraction tests | ☑ |
 
 ---
 
@@ -210,12 +210,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.22 | Implement `GitHubConnector` extending `BaseConnector` | ☐ |
-| 1.23 | Fetch GitHub Issues → normalize to `WorkItem` | ☐ |
-| 1.24 | Fetch GitHub Milestones → normalize to `Milestone` | ☐ |
-| 1.25 | Map GitHub labels/assignees to work item fields | ☐ |
-| 1.26 | Handle pagination for large repositories | ☐ |
-| 1.27 | Store `external_id` for deduplication on re-sync | ☐ |
+| 1.22 | Implement `GitHubConnector` extending `BaseConnector` | ☑ |
+| 1.23 | Fetch GitHub Issues → normalize to `WorkItem` | ☑ |
+| 1.24 | Fetch GitHub Milestones → normalize to `Milestone` | ☑ |
+| 1.25 | Map GitHub labels/assignees to work item fields | ☑ |
+| 1.26 | Handle pagination for large repositories | ☑ |
+| 1.27 | Store `external_id` for deduplication on re-sync | ☑ |
 
 ---
 
@@ -223,11 +223,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.28 | Fetch Pull Requests → extract review status, merge time, CI status | ☐ |
-| 1.29 | Extract cross-references between issues as `Dependency` records | ☐ |
-| 1.30 | Parse "blocked by" / "depends on" keywords in issue bodies | ☐ |
-| 1.31 | Implement incremental sync (only fetch since `last_synced`) | ☐ |
-| 1.32 | Write integration tests with mocked GitHub API responses | ☐ |
+| 1.28 | Fetch Pull Requests → extract review status, merge time, CI status | ☑ |
+| 1.29 | Extract cross-references between issues as `Dependency` records | ☑ |
+| 1.30 | Parse "blocked by" / "depends on" keywords in issue bodies | ☑ |
+| 1.31 | Implement incremental sync (only fetch since `last_synced`) | ☑ |
+| 1.32 | Write integration tests with mocked GitHub API responses | ☑ |
 
 ---
 
@@ -237,12 +237,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.33 | Define expected CSV schema: `month`, `category`, `planned`, `actual` | ☐ |
-| 1.34 | Implement `CSVBudgetConnector` extending `BaseConnector` | ☐ |
-| 1.35 | `POST /api/projects/{id}/budget/upload` — accept CSV file | ☐ |
-| 1.36 | Validate and normalize budget rows into `BudgetRecord` model | ☐ |
-| 1.37 | Handle re-upload: replace previous budget data for same period | ☐ |
-| 1.38 | Write tests with valid and malformed CSV files | ☐ |
+| 1.33 | Define expected CSV schema: `month`, `category`, `planned`, `actual` | ☑ |
+| 1.34 | Implement `CSVBudgetConnector` extending `BaseConnector` | ☑ |
+| 1.35 | `POST /api/projects/{id}/budget/upload` — accept CSV file | ☑ |
+| 1.36 | Validate and normalize budget rows into `BudgetRecord` model | ☑ |
+| 1.37 | Handle re-upload: replace previous budget data for same period | ☑ |
+| 1.38 | Write tests with valid and malformed CSV files | ☑ |
 
 ---
 
@@ -250,14 +250,14 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.39 | Create `DataQualityCheck` model (project_id, check_type, result, details) | ☐ |
-| 1.40 | Implement check: work items missing due dates | ☐ |
-| 1.41 | Implement check: stale work items (no update > N days) | ☐ |
-| 1.42 | Implement check: milestones missing target dates | ☐ |
-| 1.43 | Implement check: dependencies with unresolved targets | ☐ |
-| 1.44 | Implement check: budget data coverage / gaps | ☐ |
-| 1.45 | Calculate overall data-quality score (0–100%) | ☐ |
-| 1.46 | `GET /api/projects/{id}/data-quality` — return quality report | ☐ |
+| 1.39 | Create `DataQualityCheck` model (project_id, check_type, result, details) | ☑ |
+| 1.40 | Implement check: work items missing due dates | ☑ |
+| 1.41 | Implement check: stale work items (no update > N days) | ☑ |
+| 1.42 | Implement check: milestones missing target dates | ☑ |
+| 1.43 | Implement check: dependencies with unresolved targets | ☑ |
+| 1.44 | Implement check: budget data coverage / gaps | ☑ |
+| 1.45 | Calculate overall data-quality score (0–100%) | ☑ |
+| 1.46 | `GET /api/projects/{id}/data-quality` — return quality report | ☑ |
 
 ---
 
@@ -265,11 +265,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.47 | Create `ProjectSnapshot` model (project_id, snapshot_date, state_json) | ☐ |
-| 1.48 | Implement snapshot service: capture current project state as JSON | ☐ |
-| 1.49 | Schedule daily snapshot creation (store in DB, not filesystem) | ☐ |
-| 1.50 | `GET /api/projects/{id}/snapshots` — list available snapshots | ☐ |
-| 1.51 | Write snapshot creation and retrieval tests | ☐ |
+| 1.47 | Create `ProjectSnapshot` model (project_id, snapshot_date, state_json) | ☑ |
+| 1.48 | Implement snapshot service: capture current project state as JSON | ☑ |
+| 1.49 | Schedule daily snapshot creation (store in DB, not filesystem) | ☑ |
+| 1.50 | `GET /api/projects/{id}/snapshots` — list available snapshots | ☑ |
+| 1.51 | Write snapshot creation and retrieval tests | ☑ |
 
 ---
 
@@ -277,11 +277,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.52 | `GET /api/projects/{id}/work-items` — list with filters (status, priority, assignee) | ☐ |
-| 1.53 | `GET /api/projects/{id}/milestones` — list with completion stats | ☐ |
-| 1.54 | `GET /api/projects/{id}/dependencies` — list with blocked/resolved status | ☐ |
-| 1.55 | `GET /api/projects/{id}/timeline` — milestone timeline with work item mapping | ☐ |
-| 1.56 | Write API tests for all listing endpoints | ☐ |
+| 1.52 | `GET /api/projects/{id}/work-items` — list with filters (status, priority, assignee) | ☑ |
+| 1.53 | `GET /api/projects/{id}/milestones` — list with completion stats | ☑ |
+| 1.54 | `GET /api/projects/{id}/dependencies` — list with blocked/resolved status | ☑ |
+| 1.55 | `GET /api/projects/{id}/timeline` — milestone timeline with work item mapping | ☑ |
+| 1.56 | Write API tests for all listing endpoints | ☑ |
 
 ---
 
@@ -289,11 +289,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.57 | Integrate APScheduler or equivalent for periodic sync jobs | ☐ |
-| 1.58 | Create `SyncJob` model (source_id, started_at, status, items_synced, errors) | ☐ |
-| 1.59 | Implement configurable sync intervals per data source | ☐ |
-| 1.60 | `POST /api/projects/{id}/sync` — trigger manual sync | ☐ |
-| 1.61 | `GET /api/projects/{id}/sync-history` — list recent sync jobs | ☐ |
+| 1.57 | Integrate APScheduler or equivalent for periodic sync jobs | ☑ |
+| 1.58 | Create `SyncJob` model (source_id, started_at, status, items_synced, errors) | ☑ |
+| 1.59 | Implement configurable sync intervals per data source | ☑ |
+| 1.60 | `POST /api/projects/{id}/sync` — trigger manual sync | ☑ |
+| 1.61 | `GET /api/projects/{id}/sync-history` — list recent sync jobs | ☑ |
 
 ---
 
@@ -301,22 +301,22 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 1.62 | End-to-end test: create project → connect GitHub → sync → verify data | ☐ |
-| 1.63 | End-to-end test: upload CSV budget → verify budget records | ☐ |
-| 1.64 | Verify data-quality score updates after sync | ☐ |
-| 1.65 | Update seed script to use connector layer instead of direct inserts | ☐ |
-| 1.66 | Commit, tag `v0.1.0-data-foundation` | ☐ |
+| 1.62 | End-to-end test: create project → connect GitHub → sync → verify data | ☑ |
+| 1.63 | End-to-end test: upload CSV budget → verify budget records | ☑ |
+| 1.64 | Verify data-quality score updates after sync | ☑ |
+| 1.65 | Update seed script to use connector layer instead of direct inserts | ☑ |
+| 1.66 | Commit, tag `v0.1.0-data-foundation` | ☑ |
 
 ---
 
 ### Phase 1 — Exit Criteria
 
-- [ ] All 10 core entities have working models, migrations, and CRUD
-- [ ] GitHub connector fetches issues, milestones, PRs, and dependencies
-- [ ] CSV budget import works with validation
-- [ ] Data-quality score is computed and served via API
-- [ ] Sync scheduler runs periodically and logs results
-- [ ] End-to-end data flow verified from source to database
+- [x] All 10 core entities have working models, migrations, and CRUD
+- [x] GitHub connector fetches issues, milestones, PRs, and dependencies
+- [x] CSV budget import works with validation
+- [x] Data-quality score is computed and served via API
+- [x] Sync scheduler runs periodically and logs results
+- [x] End-to-end data flow verified from source to database
 
 ---
 

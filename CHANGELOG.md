@@ -11,13 +11,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Planned
 
-- Core data model for all 10 entities (Milestones, WorkItems, Dependencies, Teams, RiskEvents, Evidence, Recommendations, Actions, Outcomes, AuditLogs)
-- GitHub connector and CSV budget importer
-- Risk signal detection engine (7 categories)
-- LangGraph agent investigation workflow
-- Project health dashboard and UI screens
+- Deterministic risk signal detection engine across all 7 categories (without LLM)
+- LangGraph agent investigation workflow and root-cause analysis
+- Project health dashboard and interactive frontend UI
 
 ---
+
+## [0.1.0] — 2026-10-05 (Phase 1: Data Foundation)
+
+### Added
+
+- **Normalized Core Data Models**: Implemented SQLAlchemy 2.0 async models for all 10 core entities: `Project`, `DataSource`, `Milestone`, `WorkItem`, `Dependency`, `Team`, `TeamMember`, `RiskEvent`, `RiskSignal`, `Evidence`, `Recommendation`, `Action`, `Outcome`, `BudgetRecord`, `AuditLog`, `ProjectSnapshot`, `DataQualityCheck`, `RiskThreshold`, `SyncJob`, and `Embedding`.
+- **Alembic Migration**: Created migration `002_core_data_foundation.py` creating all tables, foreign keys, indexes, and constraints.
+- **Pydantic Schemas & Base CRUD**: Built comprehensive request/response schemas for work items, milestones, dependencies, teams, budgets, data quality checks, snapshots, and sync jobs.
+- **Connector Abstraction & GitHub Connector**: Implemented `BaseConnector` abstraction and `GitHubConnector` fetching issues, milestones, and pull requests with pagination, normalization, and automatic dependency extraction from body keywords (`blocked by #ID`, `depends on #ID`).
+- **CSV Financial Budget Importer**: Implemented `CSVBudgetConnector` and `BudgetService` with schema normalization, variance calculation (`actual - planned`), period replacement on re-upload, and budget summary reports.
+- **Data Quality Engine**: Implemented `DataQualityService` evaluating 5 rule checks (missing due dates, stale items, missing target dates, unresolved dependencies, budget coverage) and computing a composite health reliability score (0–100%).
+- **Historical Project Snapshots**: Implemented `SnapshotService` serializing point-in-time project states and metrics for trend analysis and historical replay.
+- **Sync Scheduler & Sync History**: Integrated APScheduler in `app/scheduler/jobs.py` for periodic data sync and daily snapshot generation, with manual sync trigger (`POST /api/v1/projects/{id}/sync`) and sync execution audit history.
+- **REST API Endpoints**: Created 18+ endpoints covering Projects, Work Items, Milestones, Timeline, Dependencies, Budget Upload, Data Quality, Snapshots, and Sync.
+- **Automated Test Suite**: Added comprehensive test suite with 100% pass rate covering GitHub connector, CSV budget importer, data quality rules, work item/milestone flows, sync service, and REST API endpoints.
 
 ## [0.0.2] — 2026-10-04 (Phase 0: Project Setup & Validation)
 

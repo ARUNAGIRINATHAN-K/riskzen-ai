@@ -15,6 +15,11 @@ class DataSourceCreate(DataSourceBase):
     pass
 
 
+class DataSourceUpdate(BaseModel):
+    config: Optional[dict[str, Any]] = None
+    status: Optional[str] = None
+
+
 class DataSourceResponse(DataSourceBase):
     model_config = ConfigDict(from_attributes=True)
 
@@ -54,3 +59,25 @@ class ProjectResponse(ProjectBase):
     created_at: datetime
     updated_at: datetime
     data_sources: list[DataSourceResponse] = Field(default_factory=list)
+
+
+class ProjectSummaryCounts(BaseModel):
+    total_work_items: int = 0
+    open_work_items: int = 0
+    in_progress_work_items: int = 0
+    completed_work_items: int = 0
+    total_milestones: int = 0
+    open_milestones: int = 0
+    total_dependencies: int = 0
+    active_blockers: int = 0
+    active_risks_count: int = 0
+    critical_risks_count: int = 0
+    data_quality_score: float = 100.0
+
+
+class ProjectSummaryResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    project: ProjectResponse
+    counts: ProjectSummaryCounts
+    last_synced_at: Optional[datetime] = None

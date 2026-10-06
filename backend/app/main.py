@@ -1,11 +1,11 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 
 from app.api.health import router as health_router
 from app.api.router import api_router
 from app.config import settings
+from app.scheduler.jobs import shutdown_scheduler, start_scheduler
 from app.utils.logging import get_logger, setup_logging
 
 setup_logging()
@@ -21,7 +21,21 @@ async def lifespan(app: FastAPI):
         log_level=settings.LOG_LEVEL,
         llm_provider=settings.LLM_PROVIDER,
     )
+    # Start background scheduler in non-testing environments
+    if settings.ENVIRONMENT != "testing":
+        try:
+            start_scheduler()
+        except Exception as exc:
+            logger.warn("Scheduler failed to start during lifespan", error=str(exc))
+
     yield
+
+    if settings.ENVIRONMENT != "testing":
+        try:
+            shutdown_scheduler()
+        except Exception as exc:
+            logger.warn("Scheduler shutdown error", error=str(exc))
+
     logger.info("RiskZen Backend shutting down")
 
 
