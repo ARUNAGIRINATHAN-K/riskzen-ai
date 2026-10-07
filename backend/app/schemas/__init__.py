@@ -19,6 +19,17 @@ from app.schemas.project import (
     ProjectSummaryResponse,
     ProjectUpdate,
 )
+from app.schemas.risk import (
+    EvidenceResponse,
+    RiskCategorySummary,
+    RiskDetailResponse,
+    RiskEvaluationResponse,
+    RiskEventResponse,
+    RiskHistoryResponse,
+    RiskSignalResponse,
+    RiskStatusUpdate,
+    RiskSummaryResponse,
+)
 from app.schemas.snapshot import ProjectSnapshotResponse, SnapshotCreate
 from app.schemas.sync import ManualSyncRequest, SyncJobResponse, SyncSummaryResponse
 from app.schemas.team import (
@@ -28,6 +39,11 @@ from app.schemas.team import (
     TeamMemberCreate,
     TeamMemberResponse,
     TeamResponse,
+)
+from app.schemas.threshold import (
+    RiskThresholdItem,
+    RiskThresholdsResponse,
+    RiskThresholdUpdate,
 )
 from app.schemas.work_item import (
     DependencyCreate,
@@ -88,4 +104,16 @@ __all__ = [
     "ManualSyncRequest",
     "SyncJobResponse",
     "SyncSummaryResponse",
+    "RiskSignalResponse",
+    "EvidenceResponse",
+    "RiskHistoryResponse",
+    "RiskEventResponse",
+    "RiskDetailResponse",
+    "RiskStatusUpdate",
+    "RiskCategorySummary",
+    "RiskSummaryResponse",
+    "RiskEvaluationResponse",
+    "RiskThresholdItem",
+    "RiskThresholdUpdate",
+    "RiskThresholdsResponse",
 ]

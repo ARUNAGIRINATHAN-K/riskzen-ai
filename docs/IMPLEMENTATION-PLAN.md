@@ -335,11 +335,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.1 | Design `RiskSignal` dataclass (category, signal_type, severity, value, threshold, metadata) | ☐ |
-| 2.2 | Design `BaseRiskRule` abstract class with `evaluate(project_state) → list[RiskSignal]` | ☐ |
-| 2.3 | Create `RiskEngineService` that orchestrates all rules | ☐ |
-| 2.4 | Create `RiskThreshold` model (project_id, category, signal_type, warning, critical) | ☐ |
-| 2.5 | `GET/PUT /api/projects/{id}/thresholds` — view/configure thresholds | ☐ |
+| 2.1 | Design `RiskSignal` dataclass (category, signal_type, severity, value, threshold, metadata) | ☑ |
+| 2.2 | Design `BaseRiskRule` abstract class with `evaluate(project_state) → list[RiskSignal]` | ☑ |
+| 2.3 | Create `RiskEngineService` that orchestrates all rules | ☑ |
+| 2.4 | Create `RiskThreshold` model (project_id, category, signal_type, warning, critical) | ☑ |
+| 2.5 | `GET/PUT /api/projects/{id}/thresholds` — view/configure thresholds | ☑ |
 
 ---
 
@@ -347,12 +347,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.6 | Rule: overdue tasks (due_date < today, status != done) | ☐ |
-| 2.7 | Rule: milestone slippage (items behind schedule vs target date) | ☐ |
-| 2.8 | Rule: increasing cycle time (moving average over last N completed items) | ☐ |
-| 2.9 | Rule: aging work (open items with no updates > N days) | ☐ |
-| 2.10 | Rule: declining completion rate (completed items per week trending down) | ☐ |
-| 2.11 | Write unit tests for each schedule rule with fixture data | ☐ |
+| 2.6 | Rule: overdue tasks (due_date < today, status != done) | ☑ |
+| 2.7 | Rule: milestone slippage (items behind schedule vs target date) | ☑ |
+| 2.8 | Rule: increasing cycle time (moving average over last N completed items) | ☑ |
+| 2.9 | Rule: aging work (open items with no updates > N days) | ☑ |
+| 2.10 | Rule: declining completion rate (completed items per week trending down) | ☑ |
+| 2.11 | Write unit tests for each schedule rule with fixture data | ☑ |
 
 ---
 
@@ -360,11 +360,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.12 | Rule: blocked tasks exceeding threshold (blocked > N days) | ☐ |
-| 2.13 | Rule: overdue upstream dependencies | ☐ |
-| 2.14 | Rule: dependency concentration (single work item blocks > N items) | ☐ |
-| 2.15 | Rule: cross-team handoff delays | ☐ |
-| 2.16 | Write unit tests for dependency rules | ☐ |
+| 2.12 | Rule: blocked tasks exceeding threshold (blocked > N days) | ☑ |
+| 2.13 | Rule: overdue upstream dependencies | ☑ |
+| 2.14 | Rule: dependency concentration (single work item blocks > N items) | ☑ |
+| 2.15 | Rule: cross-team handoff delays | ☑ |
+| 2.16 | Write unit tests for dependency rules | ☑ |
 
 ---
 
@@ -372,13 +372,13 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.17 | Rule: scope growth (new work items created this cycle vs previous) | ☐ |
-| 2.18 | Rule: requirement churn (items changing priority or description frequently) | ☐ |
-| 2.19 | Rule: reopened work items count | ☐ |
-| 2.20 | Rule: workload concentration (top assignee has > X% of open items) | ☐ |
-| 2.21 | Rule: excessive WIP (open items per person > threshold) | ☐ |
-| 2.22 | Rule: single-owner bottleneck (critical items owned by one person) | ☐ |
-| 2.23 | Write unit tests for scope and capacity rules | ☐ |
+| 2.17 | Rule: scope growth (new work items created this cycle vs previous) | ☑ |
+| 2.18 | Rule: requirement churn (items changing priority or description frequently) | ☑ |
+| 2.19 | Rule: reopened work items count | ☑ |
+| 2.20 | Rule: workload concentration (top assignee has > X% of open items) | ☑ |
+| 2.21 | Rule: excessive WIP (open items per person > threshold) | ☑ |
+| 2.22 | Rule: single-owner bottleneck (critical items owned by one person) | ☑ |
+| 2.23 | Write unit tests for scope and capacity rules | ☑ |
 
 ---
 
@@ -386,12 +386,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.24 | Rule: defect growth (bug-labeled items increasing over periods) | ☐ |
-| 2.25 | Rule: reopened issues trend | ☐ |
-| 2.26 | Rule: failed CI builds (from GitHub PR data) | ☐ |
-| 2.27 | Rule: actual vs planned budget variance exceeding threshold | ☐ |
-| 2.28 | Rule: burn-rate acceleration | ☐ |
-| 2.29 | Write unit tests for quality and budget rules | ☐ |
+| 2.24 | Rule: defect growth (bug-labeled items increasing over periods) | ☑ |
+| 2.25 | Rule: reopened issues trend | ☑ |
+| 2.26 | Rule: failed CI builds (from GitHub PR data) | ☑ |
+| 2.27 | Rule: actual vs planned budget variance exceeding threshold | ☑ |
+| 2.28 | Rule: burn-rate acceleration | ☑ |
+| 2.29 | Write unit tests for quality and budget rules | ☑ |
 
 ---
 
@@ -399,10 +399,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.30 | Rule: long-running blockers (items labeled "blocked" > N days) | ☐ |
-| 2.31 | Rule: overdue approvals (PRs awaiting review > N days) | ☐ |
-| 2.32 | Rule: unresolved decision items (issues labeled "decision-needed" aging) | ☐ |
-| 2.33 | Write unit tests for decision latency rules | ☐ |
+| 2.30 | Rule: long-running blockers (items labeled "blocked" > N days) | ☑ |
+| 2.31 | Rule: overdue approvals (PRs awaiting review > N days) | ☑ |
+| 2.32 | Rule: unresolved decision items (issues labeled "decision-needed" aging) | ☑ |
+| 2.33 | Write unit tests for decision latency rules | ☑ |
 
 ---
 
@@ -412,11 +412,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.34 | Implement weighted risk propensity score per category | ☐ |
-| 2.35 | Aggregate category scores into overall project risk level (Low/Medium/High/Critical) | ☐ |
-| 2.36 | Make category weights configurable per project | ☐ |
-| 2.37 | Calculate confidence based on data quality + signal strength | ☐ |
-| 2.38 | Write scoring engine tests with known inputs and expected outputs | ☐ |
+| 2.34 | Implement weighted risk propensity score per category | ☑ |
+| 2.35 | Aggregate category scores into overall project risk level (Low/Medium/High/Critical) | ☑ |
+| 2.36 | Make category weights configurable per project | ☑ |
+| 2.37 | Calculate confidence based on data quality + signal strength | ☑ |
+| 2.38 | Write scoring engine tests with known inputs and expected outputs | ☑ |
 
 ---
 
@@ -424,11 +424,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.39 | When engine detects a material risk: create `RiskEvent` record | ☐ |
-| 2.40 | Attach contributing `RiskSignal` records as evidence | ☐ |
-| 2.41 | Implement deduplication: don't create duplicate events for the same ongoing risk | ☐ |
-| 2.42 | Implement risk status transitions: `new → active → mitigated → resolved → closed` | ☐ |
-| 2.43 | Write risk event lifecycle tests | ☐ |
+| 2.39 | When engine detects a material risk: create `RiskEvent` record | ☑ |
+| 2.40 | Attach contributing `RiskSignal` records as evidence | ☑ |
+| 2.41 | Implement deduplication: don't create duplicate events for the same ongoing risk | ☑ |
+| 2.42 | Implement risk status transitions: `new → active → mitigated → resolved → closed` | ☑ |
+| 2.43 | Write risk event lifecycle tests | ☑ |
 
 ---
 
@@ -436,11 +436,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.44 | Create `RiskHistory` model (risk_id, timestamp, severity, score, status) | ☐ |
-| 2.45 | Record severity changes over time for each risk event | ☐ |
-| 2.46 | `GET /api/projects/{id}/risks` — list active risks sorted by severity | ☐ |
-| 2.47 | `GET /api/projects/{id}/risks/{risk_id}` — detail with history | ☐ |
-| 2.48 | `GET /api/projects/{id}/risk-summary` — category breakdown with trends | ☐ |
+| 2.44 | Create `RiskHistory` model (risk_id, timestamp, severity, score, status) | ☑ |
+| 2.45 | Record severity changes over time for each risk event | ☑ |
+| 2.46 | `GET /api/projects/{id}/risks` — list active risks sorted by severity | ☑ |
+| 2.47 | `GET /api/projects/{id}/risks/{risk_id}` — detail with history | ☑ |
+| 2.48 | `GET /api/projects/{id}/risk-summary` — category breakdown with trends | ☑ |
 
 ---
 
@@ -448,10 +448,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.49 | Integrate risk engine with sync scheduler (run after each data sync) | ☐ |
-| 2.50 | Add manual trigger: `POST /api/projects/{id}/evaluate` | ☐ |
-| 2.51 | Create `RiskEvaluation` log (project_id, timestamp, signals_detected, events_created) | ☐ |
-| 2.52 | Verify end-to-end: sync data → run engine → risk events appear | ☐ |
+| 2.49 | Integrate risk engine with sync scheduler (run after each data sync) | ☑ |
+| 2.50 | Add manual trigger: `POST /api/projects/{id}/evaluate` | ☑ |
+| 2.51 | Create `RiskEvaluation` log (project_id, timestamp, signals_detected, events_created) | ☑ |
+| 2.52 | Verify end-to-end: sync data → run engine → risk events appear | ☑ |
 
 ---
 
@@ -459,10 +459,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.53 | Provide recommended default thresholds per risk category | ☐ |
-| 2.54 | `PUT /api/projects/{id}/thresholds` — override defaults | ☐ |
-| 2.55 | Validate threshold values (non-negative, sensible ranges) | ☐ |
-| 2.56 | Apply configured thresholds in all risk rules | ☐ |
+| 2.53 | Provide recommended default thresholds per risk category | ☑ |
+| 2.54 | `PUT /api/projects/{id}/thresholds` — override defaults | ☑ |
+| 2.55 | Validate threshold values (non-negative, sensible ranges) | ☑ |
+| 2.56 | Apply configured thresholds in all risk rules | ☑ |
 
 ---
 
@@ -470,21 +470,21 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 2.57 | End-to-end test: seed data with known risks → engine detects them correctly | ☐ |
-| 2.58 | Verify no false positives in seed data scenarios | ☐ |
-| 2.59 | Benchmark: engine evaluates 500+ work items in < 2 seconds | ☐ |
-| 2.60 | Commit, tag `v0.2.0-risk-engine` | ☐ |
+| 2.57 | End-to-end test: seed data with known risks → engine detects them correctly | ☑ |
+| 2.58 | Verify no false positives in seed data scenarios | ☑ |
+| 2.59 | Benchmark: engine evaluates 500+ work items in < 2 seconds | ☑ |
+| 2.60 | Commit, tag `v0.2.0-risk-engine` | ☑ |
 
 ---
 
 ### Phase 2 — Exit Criteria
 
-- [ ] All 7 risk categories have at least 2 working rules each
-- [ ] Risk propensity scoring produces Low/Medium/High/Critical levels
-- [ ] Risk events are created, deduplicated, and tracked with history
-- [ ] Thresholds are configurable per project
-- [ ] Engine runs automatically after data sync
-- [ ] System detects known risks in seed data without any LLM involvement
+- [x] All 7 risk categories have at least 2 working rules each
+- [x] Risk propensity scoring produces Low/Medium/High/Critical levels
+- [x] Risk events are created, deduplicated, and tracked with history
+- [x] Thresholds are configurable per project
+- [x] Engine runs automatically after data sync
+- [x] System detects known risks in seed data without any LLM involvement
 
 ---
 

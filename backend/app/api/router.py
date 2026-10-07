@@ -6,8 +6,10 @@ from app.api.dependencies import router as dependencies_router
 from app.api.health import router as health_router
 from app.api.milestones import router as milestones_router
 from app.api.projects import router as projects_router
+from app.api.risks import router as risks_router
 from app.api.snapshots import router as snapshots_router
 from app.api.sync import router as sync_router
+from app.api.thresholds import router as thresholds_router
 from app.api.work_items import router as work_items_router
 
 api_router = APIRouter()
@@ -24,3 +26,8 @@ api_router.include_router(budget_router)
 api_router.include_router(data_quality_router)
 api_router.include_router(snapshots_router)
 api_router.include_router(sync_router)
+
+# Risk Detection Engine Routers
+api_router.include_router(risks_router)
+api_router.include_router(thresholds_router)
+

@@ -5,7 +5,7 @@ from app.models.data_quality import DataQualityCheck
 from app.models.embedding import Embedding
 from app.models.project import DataSource, Project
 from app.models.recommendation import Action, Outcome, Recommendation
-from app.models.risk import Evidence, RiskEvent, RiskSignal
+from app.models.risk import Evidence, RiskEvent, RiskHistory, RiskSignal
 from app.models.snapshot import ProjectSnapshot
 from app.models.sync import SyncJob
 from app.models.team import Team, TeamMember
@@ -24,6 +24,7 @@ __all__ = [
     "TeamMember",
     "RiskEvent",
     "RiskSignal",
+    "RiskHistory",
     "Evidence",
     "Recommendation",
     "Action",

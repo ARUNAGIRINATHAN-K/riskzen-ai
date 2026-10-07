@@ -158,6 +158,13 @@ class SyncService:
                 except Exception as dq_err:
                     logger.warn("Data quality evaluation failed post-sync", error=str(dq_err))
 
+                # Trigger deterministic risk engine re-evaluation post-sync
+                try:
+                    from app.services.risk_engine_service import RiskEngineService
+                    await RiskEngineService.evaluate_project(session, project_id)
+                except Exception as risk_err:
+                    logger.warn("Risk engine evaluation failed post-sync", error=str(risk_err))
+
                 # Log audit record
                 audit = AuditLog(
                     project_id=project_id,

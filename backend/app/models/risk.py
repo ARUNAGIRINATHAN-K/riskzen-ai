@@ -47,14 +47,16 @@ class RiskEvent(Base, UUIDMixin, TimestampMixin):
 
     # Relationships
     project: Mapped["Project"] = relationship("Project", back_populates="risk_events")  # type: ignore # noqa: F821
-    signals: Mapped[list["RiskSignal"]] = relationship("RiskSignal", back_populates="risk_event", cascade="all, delete-orphan")
-    evidence_items: Mapped[list["Evidence"]] = relationship("Evidence", back_populates="risk_event", cascade="all, delete-orphan")
-    recommendations: Mapped[list["Recommendation"]] = relationship("Recommendation", back_populates="risk_event", cascade="all, delete-orphan")  # type: ignore # noqa: F821
-    outcome: Mapped[Optional["Outcome"]] = relationship("Outcome", back_populates="risk_event", uselist=False, cascade="all, delete-orphan")  # type: ignore # noqa: F821
+    signals: Mapped[list["RiskSignal"]] = relationship("RiskSignal", back_populates="risk_event", cascade="all, delete-orphan", lazy="selectin")
+    evidence_items: Mapped[list["Evidence"]] = relationship("Evidence", back_populates="risk_event", cascade="all, delete-orphan", lazy="selectin")
+    history: Mapped[list["RiskHistory"]] = relationship("RiskHistory", back_populates="risk_event", cascade="all, delete-orphan", lazy="selectin")
+    recommendations: Mapped[list["Recommendation"]] = relationship("Recommendation", back_populates="risk_event", cascade="all, delete-orphan", lazy="selectin")  # type: ignore # noqa: F821
+    outcome: Mapped[Optional["Outcome"]] = relationship("Outcome", back_populates="risk_event", uselist=False, cascade="all, delete-orphan", lazy="selectin")  # type: ignore # noqa: F821
 
     __table_args__ = (
         Index("ix_risk_events_proj_stat_sev", "project_id", "status", "severity"),
         Index("ix_risk_events_detected_at", "detected_at"),
+        Index("ix_risk_events_proj_cat", "project_id", "category"),
     )
 
     def __repr__(self) -> str:
@@ -112,3 +114,32 @@ class Evidence(Base, UUIDMixin):
 
     # Relationships
     risk_event: Mapped["RiskEvent"] = relationship("RiskEvent", back_populates="evidence_items")
+
+
+class RiskHistory(Base, UUIDMixin):
+    """Historical timeline log tracking severity and score changes for a risk event."""
+
+    __tablename__ = "risk_histories"
+
+    risk_event_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("risk_events.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    severity: Mapped[str] = mapped_column(String(20), nullable=False)
+    score: Mapped[float] = mapped_column(Float, nullable=False)
+    status: Mapped[str] = mapped_column(String(20), nullable=False)
+    details: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict, nullable=False)
+    recorded_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc),
+        nullable=False,
+    )
+
+    # Relationships
+    risk_event: Mapped["RiskEvent"] = relationship("RiskEvent", back_populates="history")
+
+    __table_args__ = (
+        Index("ix_risk_histories_event_date", "risk_event_id", "recorded_at"),
+    )

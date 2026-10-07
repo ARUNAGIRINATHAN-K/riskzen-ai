@@ -11,9 +11,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Planned
 
-- Deterministic risk signal detection engine across all 7 categories (without LLM)
-- LangGraph agent investigation workflow and root-cause analysis
-- Project health dashboard and interactive frontend UI
+- LangGraph agent investigation workflow and root-cause analysis (Phase 3)
+- Project health dashboard and interactive frontend UI (Phase 4)
+
+---
+
+## [0.2.0] — 2026-10-06 (Phase 2: Risk Detection Engine)
+
+### Added
+
+- **Deterministic Rule Base (7 Categories, 0% LLM)**:
+  - **Schedule Risk**: `OverdueTasksRule`, `MilestoneSlippageRule`, `AgingWorkRule` (detecting deadline slips, overdue work items, and stalled execution).
+  - **Dependency Risk**: `BlockedTasksRule`, `OverdueUpstreamDependenciesRule`, `DependencyConcentrationRule` (identifying upstream blockers, cascade delays, and high-impact nexus items).
+  - **Scope Risk**: `ScopeGrowthRule`, `RequirementChurnRule` (detecting mid-milestone scope creep and unstable requirement churn).
+  - **Capacity Risk**: `WorkloadConcentrationRule`, `ExcessiveWIPRule`, `SingleOwnerBottleneckRule` (identifying key-person bottlenecks and team overload).
+  - **Quality Risk**: `DefectGrowthRule`, `CriticalDefectDebtRule`, `ReopenedIssuesRule` (detecting bug ratio spikes, SLA breaches, and regression rework).
+  - **Budget Risk**: `BudgetVarianceRule`, `BurnRateAccelerationRule` (flagging cost variance and milestone burn rate pacing gaps).
+  - **Decision Risk**: `LongRunningBlockersRule`, `StalledPRReviewsRule` (detecting prolonged blocker staleness and stalled code reviews).
+- **Risk Scoring Engine (`scoring.py`)**:
+  - Category propensity scoring and weighted aggregation into project risk levels (`Low`, `Medium`, `High`, `Critical`).
+  - Signal depth and data quality confidence calculation.
+- **Risk Event Deduplication & Audit Tracking**:
+  - `RiskEvent` upsert with deterministic deduplication key `(project_id, category, signal_type, affected_milestone_id)`.
+  - Comprehensive `RiskHistory` table tracking status transitions (`new -> active -> mitigated -> resolved -> closed -> dismissed`) and score progression.
+- **Risk Engine Service (`RiskEngineService`)**:
+  - Orchestrates in-memory `ProjectState` evaluation, signal extraction, scoring, deduplication, and persistence.
+  - Automatic risk evaluation hook following data synchronization in `SyncService`.
+- **Threshold Management API**:
+  - `GET /api/v1/projects/{id}/thresholds` and `PUT /api/v1/projects/{id}/thresholds` with customizable thresholds per project.
+- **Risk REST APIs**:
+  - `POST /api/v1/projects/{id}/evaluate` (deterministic manual evaluation trigger).
+  - `GET /api/v1/projects/{id}/risks` (filterable by category, severity, status).
+  - `GET /api/v1/projects/{id}/risks/{risk_id}` (complete signal evidence and audit history).
+  - `PATCH /api/v1/projects/{id}/risks/{risk_id}/status` (status updates with audit reason).
+  - `GET /api/v1/projects/{id}/risk-summary` (aggregated category breakdown and health levels).
+- **Automated Test Suite**:
+  - Unit tests for all 7 risk categories rules in `test_risk_rules.py`.
+  - Scoring engine tests in `test_risk_scoring.py`.
+  - API endpoint tests in `test_risks_api.py`.
+  - End-to-end benchmark & false-positive validation tests in `test_risk_engine_e2e.py` verifying sub-500ms execution on 500+ items.
 
 ---
 
