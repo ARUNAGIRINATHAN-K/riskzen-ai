@@ -253,6 +253,13 @@ class RiskEngineService:
 
         await session.commit()
 
+        # 9. Auto-trigger AI agent investigation for material risks
+        try:
+            from app.services.agent_service import AgentService
+            await AgentService.trigger_investigations_for_material_risks(session, project_id)
+        except Exception:
+            pass  # Background safety: never fail evaluation if agent investigation encounters issues
+
         # Build response
         category_summaries = {
             cat_str: RiskCategorySummary(

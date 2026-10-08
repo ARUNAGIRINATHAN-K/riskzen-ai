@@ -1,3 +1,10 @@
+from app.schemas.action import (
+    ActionBase,
+    ActionCreate,
+    ActionListResponse,
+    ActionResponse,
+    ActionUpdate,
+)
 from app.schemas.budget import (
     BudgetRecordBase,
     BudgetRecordCreate,
@@ -7,6 +14,12 @@ from app.schemas.budget import (
 from app.schemas.common import ErrorDetail, ErrorResponse, PaginatedResponse, PaginationParams
 from app.schemas.data_quality import DataQualityCheckResponse, DataQualityReportResponse
 from app.schemas.health import HealthResponse, ServiceHealth
+from app.schemas.outcome import (
+    FeedbackCreate,
+    FeedbackResponse,
+    OutcomeCreate,
+    OutcomeResponse,
+)
 from app.schemas.project import (
     DataSourceBase,
     DataSourceCreate,
@@ -18,6 +31,15 @@ from app.schemas.project import (
     ProjectSummaryCounts,
     ProjectSummaryResponse,
     ProjectUpdate,
+)
+from app.schemas.recommendation import (
+    InvestigationTriggerResponse,
+    RecommendationApproveRequest,
+    RecommendationBase,
+    RecommendationDismissRequest,
+    RecommendationModifyRequest,
+    RecommendationResponse,
+    RecommendationSnoozeRequest,
 )
 from app.schemas.risk import (
     EvidenceResponse,
@@ -116,4 +138,21 @@ __all__ = [
     "RiskThresholdItem",
     "RiskThresholdUpdate",
     "RiskThresholdsResponse",
+    "RecommendationBase",
+    "RecommendationResponse",
+    "RecommendationApproveRequest",
+    "RecommendationModifyRequest",
+    "RecommendationDismissRequest",
+    "RecommendationSnoozeRequest",
+    "InvestigationTriggerResponse",
+    "ActionBase",
+    "ActionCreate",
+    "ActionUpdate",
+    "ActionResponse",
+    "ActionListResponse",
+    "OutcomeCreate",
+    "OutcomeResponse",
+    "FeedbackCreate",
+    "FeedbackResponse",
 ]
+

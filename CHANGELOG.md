@@ -11,8 +11,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Planned
 
-- LangGraph agent investigation workflow and root-cause analysis (Phase 3)
 - Project health dashboard and interactive frontend UI (Phase 4)
+- Historical replay, precision/recall measurement, and tuning (Phase 5)
+
+---
+
+## [0.3.0] — 2026-10-07 (Phase 3: Agentic Investigation Layer)
+
+### Added
+
+- **LLM Provider Abstraction (`BaseLLMService`)**:
+  - `OllamaProvider`: Local LLM inference via Ollama HTTP API with timeout and JSON formatting support.
+  - `OpenAIProvider`: OpenAI-compatible endpoint provider with API key authentication.
+  - `MockLLMProvider`: Deterministic offline provider producing structured investigation outputs for automated tests and fallbacks.
+  - `get_llm_service()`: Dynamic provider factory configurable via `LLM_PROVIDER` environment variable.
+- **Evidence Retrieval & Semantic Search (`EvidenceRetrievalService`)**:
+  - Embedding pipeline indexing work items and milestones into `Embedding` records.
+  - Hybrid search combining structural database relationships (dependency blocker paths, milestone due dates) and text matching with relevance scoring.
+- **5-Node LangGraph Investigation Workflow (`StateGraph`)**:
+  - **Investigate Node**: Reasons over deterministic risk signals and formulates preliminary hypotheses & search queries.
+  - **Retrieve Evidence Node**: Fetches verified records from project databases and vector embeddings.
+  - **Analyze Node**: Conducts grounded root-cause analysis citing verified evidence items.
+  - **Recommend Node**: Generates 2–4 practical, actionable mitigation recommendations with assigned owners and urgency.
+  - **Review Node**: Quality guard and hallucination checker with 1-shot conditional retry loop.
+- **Recommendation & Action Management**:
+  - `POST /api/v1/risks/{id}/investigate`: Triggers LangGraph AI agent investigation.
+  - `GET /api/v1/risks/{id}/recommendations`: Lists mitigation recommendations for a risk.
+  - `POST /api/v1/recommendations/{id}/approve`: Approves recommendation and converts it into a tracked `Action` item.
+  - `POST /api/v1/recommendations/{id}/modify`: Modifies action parameters and creates an `Action` item.
+  - `POST /api/v1/recommendations/{id}/dismiss`: Dismisses recommendation with recorded reason.
+  - `POST /api/v1/recommendations/{id}/snooze`: Snoozes recommendation for N hours.
+  - `GET /api/v1/projects/{id}/actions`: Lists mitigation actions with summary metrics (open, completed, overdue).
+  - `PATCH /api/v1/actions/{id}` & `POST /api/v1/actions/{id}/complete`: Updates and completes action items.
+- **Outcome Tracking & User Feedback**:
+  - `POST /api/v1/risks/{id}/outcome`: Records post-mitigation success rating (Yes/Partially/No/Not sure).
+  - `POST /api/v1/risks/{id}/feedback`: Submits user rating (1–5) and alert relevance feedback.
+- **Audit Logging**:
+  - Comprehensive audit trail recording all AI investigations, human approvals, modifications, dismissals, action completions, and outcome ratings.
+- **Automated Test Suite**:
+  - Unit tests for LLM providers in `test_llm_service.py`.
+  - LangGraph 5-node workflow execution and quality guard tests in `test_langgraph_workflow.py`.
+  - Recommendation approval, action lifecycle, and outcome API tests in `test_recommendations_and_actions_api.py`.
+  - End-to-end data-to-investigation-to-outcome verification in `test_agent_investigation_e2e.py`.
 
 ---
 

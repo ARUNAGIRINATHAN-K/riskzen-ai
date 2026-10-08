@@ -503,12 +503,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.1 | Add Ollama service to `docker-compose.yml` | ☐ |
-| 3.2 | Create `LLMService` abstraction with `generate()` and `embed()` methods | ☐ |
-| 3.3 | Implement Ollama provider (local) | ☐ |
-| 3.4 | Implement OpenAI-compatible provider (optional paid fallback) | ☐ |
-| 3.5 | Add provider selection via environment variable | ☐ |
-| 3.6 | Test basic completion and embedding generation | ☐ |
+| 3.1 | Add Ollama service to `docker-compose.yml` | ☑ |
+| 3.2 | Create `LLMService` abstraction with `generate()` and `embed()` methods | ☑ |
+| 3.3 | Implement Ollama provider (local) | ☑ |
+| 3.4 | Implement OpenAI-compatible provider (optional paid fallback) | ☑ |
+| 3.5 | Add provider selection via environment variable | ☑ |
+| 3.6 | Test basic completion and embedding generation | ☑ |
 
 ---
 
@@ -516,10 +516,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.7 | Install `langgraph` and configure in backend | ☐ |
-| 3.8 | Define `InvestigationState` dataclass (risk_event, signals, evidence, analysis, recommendations) | ☐ |
-| 3.9 | Create graph skeleton with nodes: `investigate → retrieve_evidence → analyze → recommend → review` | ☐ |
-| 3.10 | Implement graph compilation and basic execution test | ☐ |
+| 3.7 | Install `langgraph` and configure in backend | ☑ |
+| 3.8 | Define `InvestigationState` dataclass (risk_event, signals, evidence, analysis, recommendations) | ☑ |
+| 3.9 | Create graph skeleton with nodes: `investigate → retrieve_evidence → analyze → recommend → review` | ☑ |
+| 3.10 | Implement graph compilation and basic execution test | ☑ |
 
 ---
 
@@ -527,11 +527,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.11 | Build context assembly: gather risk signals, related work items, dependencies, milestone data | ☐ |
-| 3.12 | Design investigation prompt template (structured, evidence-focused) | ☐ |
-| 3.13 | Implement `investigate` node: LLM reasons over structured signals | ☐ |
-| 3.14 | Parse and validate investigation output structure | ☐ |
-| 3.15 | Test investigator with sample risk events | ☐ |
+| 3.11 | Build context assembly: gather risk signals, related work items, dependencies, milestone data | ☑ |
+| 3.12 | Design investigation prompt template (structured, evidence-focused) | ☑ |
+| 3.13 | Implement `investigate` node: LLM reasons over structured signals | ☑ |
+| 3.14 | Parse and validate investigation output structure | ☑ |
+| 3.15 | Test investigator with sample risk events | ☑ |
 
 ---
 
@@ -539,12 +539,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.16 | Implement pgvector embedding storage for project documents | ☐ |
-| 3.17 | Create embedding pipeline for work item descriptions, comments, PR descriptions | ☐ |
-| 3.18 | Implement `retrieve_evidence` node: semantic search for relevant project records | ☐ |
-| 3.19 | Also retrieve: related past risk events, dependency chains, milestone history | ☐ |
-| 3.20 | Rank and filter evidence by relevance score | ☐ |
-| 3.21 | Test evidence retrieval with known scenarios | ☐ |
+| 3.16 | Implement pgvector embedding storage for project documents | ☑ |
+| 3.17 | Create embedding pipeline for work item descriptions, comments, PR descriptions | ☑ |
+| 3.18 | Implement `retrieve_evidence` node: semantic search for relevant project records | ☑ |
+| 3.19 | Also retrieve: related past risk events, dependency chains, milestone history | ☑ |
+| 3.20 | Rank and filter evidence by relevance score | ☑ |
+| 3.21 | Test evidence retrieval with known scenarios | ☑ |
 
 ---
 
@@ -552,11 +552,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.22 | Design root-cause analysis prompt (structured, must cite evidence) | ☐ |
-| 3.23 | Implement `analyze` node: identify contributing factors from evidence | ☐ |
-| 3.24 | Output: ranked list of contributing factors with supporting references | ☐ |
-| 3.25 | Implement hallucination guard: cross-check claims against retrieved evidence | ☐ |
-| 3.26 | Test with 3+ risk scenarios from seed data | ☐ |
+| 3.22 | Design root-cause analysis prompt (structured, must cite evidence) | ☑ |
+| 3.23 | Implement `analyze` node: identify contributing factors from evidence | ☑ |
+| 3.24 | Output: ranked list of contributing factors with supporting references | ☑ |
+| 3.25 | Implement hallucination guard: cross-check claims against retrieved evidence | ☑ |
+| 3.26 | Test with 3+ risk scenarios from seed data | ☑ |
 
 ---
 
@@ -564,11 +564,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.27 | Design recommendation prompt (practical, ownable, urgent, purposeful) | ☐ |
-| 3.28 | Implement `recommend` node: produce 2–4 mitigation actions per risk | ☐ |
-| 3.29 | Each recommendation includes: action, rationale, suggested owner, urgency | ☐ |
-| 3.30 | Implement `review` node: quality check for unsupported claims / consistency | ☐ |
-| 3.31 | Store recommendations in `Recommendation` table linked to risk event | ☐ |
+| 3.27 | Design recommendation prompt (practical, ownable, urgent, purposeful) | ☑ |
+| 3.28 | Implement `recommend` node: produce 2–4 mitigation actions per risk | ☑ |
+| 3.29 | Each recommendation includes: action, rationale, suggested owner, urgency | ☑ |
+| 3.30 | Implement `review` node: quality check for unsupported claims / consistency | ☑ |
+| 3.31 | Store recommendations in `Recommendation` table linked to risk event | ☑ |
 
 ---
 
@@ -578,12 +578,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.32 | `GET /api/risks/{id}/recommendations` — list recommendations for a risk | ☐ |
-| 3.33 | `POST /api/recommendations/{id}/approve` — approve recommendation | ☐ |
-| 3.34 | `POST /api/recommendations/{id}/modify` — modify and approve | ☐ |
-| 3.35 | `POST /api/recommendations/{id}/dismiss` — dismiss with reason | ☐ |
-| 3.36 | `POST /api/recommendations/{id}/snooze` — snooze for N hours | ☐ |
-| 3.37 | Record all decisions in `AuditLog` | ☐ |
+| 3.32 | `GET /api/risks/{id}/recommendations` — list recommendations for a risk | ☑ |
+| 3.33 | `POST /api/recommendations/{id}/approve` — approve recommendation | ☑ |
+| 3.34 | `POST /api/recommendations/{id}/modify` — modify and approve | ☑ |
+| 3.35 | `POST /api/recommendations/{id}/dismiss` — dismiss with reason | ☑ |
+| 3.36 | `POST /api/recommendations/{id}/snooze` — snooze for N hours | ☑ |
+| 3.37 | Record all decisions in `AuditLog` | ☑ |
 
 ---
 
@@ -591,11 +591,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.38 | On approval: create `Action` record from recommendation | ☐ |
-| 3.39 | `GET /api/projects/{id}/actions` — list actions (open, completed, overdue) | ☐ |
-| 3.40 | `PATCH /api/actions/{id}` — update status, owner, due date | ☐ |
-| 3.41 | `POST /api/actions/{id}/complete` — mark action complete | ☐ |
-| 3.42 | Track overdue actions and surface in risk evaluation | ☐ |
+| 3.38 | On approval: create `Action` record from recommendation | ☑ |
+| 3.39 | `GET /api/projects/{id}/actions` — list actions (open, completed, overdue) | ☑ |
+| 3.40 | `PATCH /api/actions/{id}` — update status, owner, due date | ☑ |
+| 3.41 | `POST /api/actions/{id}/complete` — mark action complete | ☑ |
+| 3.42 | Track overdue actions and surface in risk evaluation | ☑ |
 
 ---
 
@@ -603,11 +603,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.43 | `POST /api/risks/{id}/outcome` — record outcome (Yes/Partially/No/Not sure) | ☐ |
-| 3.44 | Accept optional comment with outcome | ☐ |
-| 3.45 | Link outcome to risk event, recommendations, and actions taken | ☐ |
-| 3.46 | `POST /api/risks/{id}/feedback` — user rates alert (relevant, not relevant, incorrect, etc.) | ☐ |
-| 3.47 | Store feedback for future model improvement | ☐ |
+| 3.43 | `POST /api/risks/{id}/outcome` — record outcome (Yes/Partially/No/Not sure) | ☑ |
+| 3.44 | Accept optional comment with outcome | ☑ |
+| 3.45 | Link outcome to risk event, recommendations, and actions taken | ☑ |
+| 3.46 | `POST /api/risks/{id}/feedback` — user rates alert (relevant, not relevant, incorrect, etc.) | ☑ |
+| 3.47 | Store feedback for future model improvement | ☑ |
 
 ---
 
@@ -615,11 +615,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.48 | Wire risk engine trigger → LangGraph pipeline for material risks | ☐ |
-| 3.49 | Define "material risk" threshold that triggers agent investigation | ☐ |
-| 3.50 | Implement async execution: agent investigation runs in background | ☐ |
-| 3.51 | Store agent execution logs (input context, LLM calls, output) | ☐ |
-| 3.52 | Add timeout and error handling for LLM calls | ☐ |
+| 3.48 | Wire risk engine trigger → LangGraph pipeline for material risks | ☑ |
+| 3.49 | Define "material risk" threshold that triggers agent investigation | ☑ |
+| 3.50 | Implement async execution: agent investigation runs in background | ☑ |
+| 3.51 | Store agent execution logs (input context, LLM calls, output) | ☑ |
+| 3.52 | Add timeout and error handling for LLM calls | ☑ |
 
 ---
 
@@ -627,10 +627,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.53 | Create 5 test scenarios with expected investigation outcomes | ☐ |
-| 3.54 | Run agent against each scenario, compare output quality | ☐ |
-| 3.55 | Evaluate: factual grounding, evidence citations, recommendation practicality | ☐ |
-| 3.56 | Tune prompts based on evaluation results | ☐ |
+| 3.53 | Create 5 test scenarios with expected investigation outcomes | ☑ |
+| 3.54 | Run agent against each scenario, compare output quality | ☑ |
+| 3.55 | Evaluate: factual grounding, evidence citations, recommendation practicality | ☑ |
+| 3.56 | Tune prompts based on evaluation results | ☑ |
 
 ---
 
@@ -638,22 +638,22 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 3.57 | End-to-end: data sync → risk detected → agent investigates → recommendations generated | ☐ |
-| 3.58 | End-to-end: approve recommendation → action created → mark complete → outcome recorded | ☐ |
-| 3.59 | Verify audit trail captures all decisions | ☐ |
-| 3.60 | Commit, tag `v0.3.0-agent-layer` | ☐ |
+| 3.57 | End-to-end: data sync → risk detected → agent investigates → recommendations generated | ☑ |
+| 3.58 | End-to-end: approve recommendation → action created → mark complete → outcome recorded | ☑ |
+| 3.59 | Verify audit trail captures all decisions | ☑ |
+| 3.60 | Commit, tag `v0.3.0-agent-layer` | ☑ |
 
 ---
 
 ### Phase 3 — Exit Criteria
 
-- [ ] LangGraph workflow executes: investigate → evidence → analyze → recommend → review
-- [ ] Agent produces structured risk alerts with evidence, contributing factors, and recommendations
-- [ ] Recommendations can be approved, modified, dismissed, or snoozed via API
-- [ ] Actions are created from approved recommendations and tracked to completion
-- [ ] Outcome feedback is recorded
-- [ ] Full audit trail is maintained
-- [ ] Agent runs reliably with Ollama (local) or optional cloud LLM
+- [x] LangGraph workflow executes: investigate → evidence → analyze → recommend → review
+- [x] Agent produces structured risk alerts with evidence, contributing factors, and recommendations
+- [x] Recommendations can be approved, modified, dismissed, or snoozed via API
+- [x] Actions are created from approved recommendations and tracked to completion
+- [x] Outcome feedback is recorded
+- [x] Full audit trail is maintained
+- [x] Agent runs reliably with Ollama (local) or optional cloud LLM
 
 ---
 
