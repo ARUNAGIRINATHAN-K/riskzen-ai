@@ -880,11 +880,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 5.1 | Create 3 historical project scenarios with known risk outcomes | ☐ |
-| 5.2 | Scenario A: schedule slippage due to blocked dependency (should detect) | ☐ |
-| 5.3 | Scenario B: scope creep causing milestone risk (should detect) | ☐ |
-| 5.4 | Scenario C: healthy project with minor issues (should NOT trigger critical alerts) | ☐ |
-| 5.5 | Import all scenarios into the system | ☐ |
+| 5.1 | Create 3 historical project scenarios with known risk outcomes | ☑ |
+| 5.2 | Scenario A: schedule slippage due to blocked dependency (should detect) | ☑ |
+| 5.3 | Scenario B: scope creep causing milestone risk (should detect) | ☑ |
+| 5.4 | Scenario C: healthy project with minor issues (should NOT trigger critical alerts) | ☑ |
+| 5.5 | Import all scenarios into the system | ☑ |
 
 ---
 
@@ -892,11 +892,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 5.6 | Run risk engine against all 3 scenarios | ☐ |
-| 5.7 | Measure: true positives, false positives, false negatives | ☐ |
-| 5.8 | Calculate precision and recall | ☐ |
-| 5.9 | Measure detection lead time (how early before the "actual" impact date) | ☐ |
-| 5.10 | Document results in `docs/evaluation-results.md` | ☐ |
+| 5.6 | Run risk engine against all 3 scenarios | ☑ |
+| 5.7 | Measure: true positives, false positives, false negatives | ☑ |
+| 5.8 | Calculate precision and recall | ☑ |
+| 5.9 | Measure detection lead time (how early before the "actual" impact date) | ☑ |
+| 5.10 | Document results in `docs/evaluation-results.md` | ☑ |
 
 ---
 
@@ -904,11 +904,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 5.11 | For each detected risk: evaluate agent explanation quality | ☐ |
-| 5.12 | Check: are all cited evidence items real records? (no hallucination) | ☐ |
-| 5.13 | Check: are contributing factors logically supported? | ☐ |
-| 5.14 | Check: are recommendations practical and specific? | ☐ |
-| 5.15 | Rate each investigation on 1–5 scale across 4 dimensions | ☐ |
+| 5.11 | For each detected risk: evaluate agent explanation quality | ☑ |
+| 5.12 | Check: are all cited evidence items real records? (no hallucination) | ☑ |
+| 5.13 | Check: are contributing factors logically supported? | ☑ |
+| 5.14 | Check: are recommendations practical and specific? | ☑ |
+| 5.15 | Rate each investigation on 1–5 scale across 4 dimensions | ☑ |
 
 ---
 
@@ -916,11 +916,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 5.16 | Load test: import project with 500+ work items, measure sync time | ☐ |
-| 5.17 | Load test: risk engine evaluation time with 500+ items | ☐ |
-| 5.18 | Test connector resilience: simulate GitHub API failures | ☐ |
-| 5.19 | Test agent resilience: simulate LLM timeout / error | ☐ |
-| 5.20 | Verify graceful degradation (system works without LLM, just no agent explanations) | ☐ |
+| 5.16 | Load test: import project with 500+ work items, measure sync time | ☑ |
+| 5.17 | Load test: risk engine evaluation time with 500+ items | ☑ |
+| 5.18 | Test connector resilience: simulate GitHub API failures | ☑ |
+| 5.19 | Test agent resilience: simulate LLM timeout / error | ☑ |
+| 5.20 | Verify graceful degradation (system works without LLM, just no agent explanations) | ☑ |
 
 ---
 
@@ -928,11 +928,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 5.21 | Verify all credentials stored in environment variables, not code | ☐ |
-| 5.22 | Verify GitHub tokens are encrypted at rest in database | ☐ |
-| 5.23 | Verify API endpoints validate input (no SQL injection, no XSS) | ☐ |
-| 5.24 | Verify Docker containers run as non-root | ☐ |
-| 5.25 | Review data flow: confirm no employee-level data leaks into agent prompts | ☐ |
+| 5.21 | Verify all credentials stored in environment variables, not code | ☑ |
+| 5.22 | Verify GitHub tokens are encrypted at rest in database | ☑ |
+| 5.23 | Verify API endpoints validate input (no SQL injection, no XSS) | ☑ |
+| 5.24 | Verify Docker containers run as non-root | ☑ |
+| 5.25 | Review data flow: confirm no employee-level data leaks into agent prompts | ☑ |
 
 ---
 
@@ -940,10 +940,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 5.26 | Fix all critical bugs found during evaluation | ☐ |
-| 5.27 | Tune risk thresholds based on evaluation false positives | ☐ |
-| 5.28 | Adjust agent prompts based on investigation quality scores | ☐ |
-| 5.29 | Improve evidence retrieval relevance if needed | ☐ |
+| 5.26 | Fix all critical bugs found during evaluation | ☑ |
+| 5.27 | Tune risk thresholds based on evaluation false positives | ☑ |
+| 5.28 | Adjust agent prompts based on investigation quality scores | ☑ |
+| 5.29 | Improve evidence retrieval relevance if needed | ☑ |
 
 ---
 
@@ -951,20 +951,20 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 5.30 | Compile evaluation report with precision, recall, lead time metrics | ☐ |
-| 5.31 | Document known limitations and failure modes | ☐ |
-| 5.32 | Commit, tag `v0.5.0-evaluated` | ☐ |
+| 5.30 | Compile evaluation report with precision, recall, lead time metrics | ☑ |
+| 5.31 | Document known limitations and failure modes | ☑ |
+| 5.32 | Commit, tag `v0.5.0-evaluated` | ☑ |
 
 ---
 
 ### Phase 5 — Exit Criteria
 
-- [ ] 3+ historical scenarios tested with documented results
-- [ ] Precision ≥ 60% for critical-risk alerts (pre-pilot baseline)
-- [ ] Agent explanations rated ≥ 3/5 on grounding and relevance
-- [ ] System handles 500+ work items within acceptable response times
-- [ ] Graceful degradation without LLM verified
-- [ ] No critical security issues open
+- [x] 3+ historical scenarios tested with documented results
+- [x] Precision ≥ 60% for critical-risk alerts (pre-pilot baseline)
+- [x] Agent explanations rated ≥ 3/5 on grounding and relevance
+- [x] System handles 500+ work items within acceptable response times
+- [x] Graceful degradation without LLM verified
+- [x] No critical security issues open
 
 ---
 

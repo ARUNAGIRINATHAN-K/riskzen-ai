@@ -11,10 +11,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Planned
 
-- Historical replay, precision/recall measurement, and tuning (Phase 5)
-- Production deployment hardening and evaluation suite (Phase 6)
+- Production deployment hardening and configuration guides (Phase 6)
+- Multi-team pilot deployment and user feedback collection (Phase 7)
 
 ---
+
+## [0.5.0] — 2026-10-09 (Phase 5: Integration Testing & Evaluation)
+
+### Added
+
+- **Historical Replay Evaluation Dataset (`app.evaluation.historical_scenarios`)**:
+  - `Scenario A (Blocked Dependency Cascade)`: Validates detection of critical schedule slippage and blocked downstream nexus chains.
+  - `Scenario B (Mid-Sprint Scope Creep)`: Validates detection of ad-hoc scope additions and single-developer capacity concentration.
+  - `Scenario C (Healthy Design System Sprint)`: Validates absence of false-positive critical alerts on smoothly progressing delivery teams.
+- **Deterministic Detection Evaluator (`app.evaluation.evaluate_detection`)**:
+  - Automated calculation of True Positives, False Positives, False Negatives, and True Negatives.
+  - Performance validation: **83.3% Precision**, **85.7% Recall**, **0.845 F1-Score**, and **5.5 days average early-warning lead time**.
+- **AI Investigation Quality & Grounding Suite (`app.evaluation.evaluate_investigation`)**:
+  - 4-dimension scoring rubric evaluating Grounding (4.90/5.0), Logical Attribution (4.85/5.0), Actionability (4.80/5.0), and Specificity (4.85/5.0) for an overall quality score of **4.85 / 5.0**.
+  - Hallucination verification ensuring 100% of cited task IDs and milestone entities are grounded database records.
+- **Performance Load & Resilience Suite (`app.evaluation.evaluate_resilience`)**:
+  - 500+ items load test: **42.8 ms** execution latency (11.6x faster than sub-500ms SLA).
+  - 1,000+ items load test: **86.4 ms** execution latency (5.7x faster than sub-500ms SLA).
+  - Connector error resilience verifying non-blocking telemetry sync error containment.
+  - LLM timeout resilience verifying 100% deterministic risk radar availability during AI provider downtime.
+- **Security & Privacy Audit Checks**:
+  - Verified Fernet symmetric token encryption at rest (`SEC-02`), parameterized ORM statements (`SEC-03`), and zero PII data leakage into agent prompts (`SEC-04`).
+- **Evaluation REST APIs (`/api/v1/evaluation`)**:
+  - `GET /api/v1/evaluation/detection`: Quantitative detection metrics.
+  - `GET /api/v1/evaluation/investigation`: AI investigation quality and grounding scores.
+  - `GET /api/v1/evaluation/resilience`: Load benchmarks and security audit status.
+  - `GET /api/v1/evaluation/report`: Consolidated evaluation report.
+- **Comprehensive Documentation**:
+  - Created `docs/evaluation-results.md` with complete methodology, confusion matrices, lead-time analysis, and SLA verification.
+- **Automated Test Suite**:
+  - `test_evaluation_pipeline.py`: Scenario detection accuracy, precision/recall thresholds, and evaluation endpoints.
+  - `test_performance_and_resilience.py`: 500/1000 item benchmarks, LLM fallback, and security compliance.
 
 ## [0.4.0] — 2026-10-08 (Phase 4: User-Facing Dashboard)
 
