@@ -38,37 +38,37 @@ export function ApproveModal({ isOpen, onClose, recommendation, onConfirm }: App
       description="Approving will convert this recommendation into a tracked project action item."
     >
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="p-3 rounded-lg bg-zinc-950/70 border border-zinc-800 text-xs text-zinc-300">
-          <span className="font-semibold text-zinc-100 block mb-1">Recommended Action:</span>
+        <div className="p-3 rounded-[6px] bg-void border border-graphite text-caption text-mist">
+          <span className="font-[510] text-paper block mb-1">Recommended Action:</span>
           {recommendation.action_description}
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-zinc-300 mb-1">
+          <label className="block text-caption font-[510] text-mist mb-1">
             Assignee / Action Owner
           </label>
           <input
             type="text"
             value={owner}
             onChange={(e) => setOwner(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
             required
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-zinc-300 mb-1">
+          <label className="block text-caption font-[510] text-mist mb-1">
             Target Due Date (Optional)
           </label>
           <input
             type="date"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
           />
         </div>
 
-        <div className="flex items-center justify-end gap-2 pt-4 border-t border-zinc-800">
+        <div className="flex items-center justify-end gap-2 pt-4 border-t border-graphite">
           <Button variant="outline" size="sm" type="button" onClick={onClose}>
             Cancel
           </Button>
@@ -130,43 +130,43 @@ export function ModifyModal({ isOpen, onClose, recommendation, onConfirm }: Modi
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-semibold text-zinc-300 mb-1">
+          <label className="block text-caption font-[510] text-mist mb-1">
             Action Description
           </label>
           <textarea
             value={actionDesc}
             onChange={(e) => setActionDesc(e.target.value)}
             rows={3}
-            className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
             required
           />
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-xs font-semibold text-zinc-300 mb-1">Action Owner</label>
+            <label className="block text-caption font-[510] text-mist mb-1">Action Owner</label>
             <input
               type="text"
               value={owner}
               onChange={(e) => setOwner(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
               required
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-zinc-300 mb-1">Due Date</label>
+            <label className="block text-caption font-[510] text-mist mb-1">Due Date</label>
             <input
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-zinc-300 mb-1">
+          <label className="block text-caption font-[510] text-mist mb-1">
             Modification Reason (Audit Trail)
           </label>
           <input
@@ -174,11 +174,11 @@ export function ModifyModal({ isOpen, onClose, recommendation, onConfirm }: Modi
             value={reason}
             onChange={(e) => setReason(e.target.value)}
             placeholder="e.g. Scoped down requirements to maintain sprint velocity"
-            className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
           />
         </div>
 
-        <div className="flex items-center justify-end gap-2 pt-4 border-t border-zinc-800">
+        <div className="flex items-center justify-end gap-2 pt-4 border-t border-graphite">
           <Button variant="outline" size="sm" type="button" onClick={onClose}>
             Cancel
           </Button>
@@ -225,7 +225,7 @@ export function DismissModal({ isOpen, onClose, recommendation, onConfirm }: Dis
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-semibold text-zinc-300 mb-1">
+          <label className="block text-caption font-[510] text-mist mb-1">
             Dismissal Justification (Required for Audit Trail)
           </label>
           <textarea
@@ -233,12 +233,12 @@ export function DismissModal({ isOpen, onClose, recommendation, onConfirm }: Dis
             onChange={(e) => setReason(e.target.value)}
             rows={3}
             placeholder="e.g. Risk was already accepted by leadership during sprint planning"
-            className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
             required
           />
         </div>
 
-        <div className="flex items-center justify-end gap-2 pt-4 border-t border-zinc-800">
+        <div className="flex items-center justify-end gap-2 pt-4 border-t border-graphite">
           <Button variant="outline" size="sm" type="button" onClick={onClose}>
             Cancel
           </Button>
@@ -285,11 +285,11 @@ export function SnoozeModal({ isOpen, onClose, recommendation, onConfirm }: Snoo
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-semibold text-zinc-300 mb-1">Snooze Duration</label>
+          <label className="block text-caption font-[510] text-mist mb-1">Snooze Duration</label>
           <select
             value={hours}
             onChange={(e) => setHours(Number(e.target.value))}
-            className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
           >
             <option value={24}>24 Hours (1 Day)</option>
             <option value={48}>48 Hours (2 Days)</option>
@@ -299,7 +299,7 @@ export function SnoozeModal({ isOpen, onClose, recommendation, onConfirm }: Snoo
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-zinc-300 mb-1">
+          <label className="block text-caption font-[510] text-mist mb-1">
             Reason / Context
           </label>
           <input
@@ -307,11 +307,11 @@ export function SnoozeModal({ isOpen, onClose, recommendation, onConfirm }: Snoo
             value={reason}
             onChange={(e) => setReason(e.target.value)}
             placeholder="e.g. Waiting on vendor API key resolution"
-            className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
           />
         </div>
 
-        <div className="flex items-center justify-end gap-2 pt-4 border-t border-zinc-800">
+        <div className="flex items-center justify-end gap-2 pt-4 border-t border-graphite">
           <Button variant="outline" size="sm" type="button" onClick={onClose}>
             Cancel
           </Button>
@@ -360,7 +360,7 @@ export function OutcomeModal({ isOpen, onClose, riskId, onConfirm }: OutcomeModa
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-semibold text-zinc-300 mb-2">
+          <label className="block text-caption font-[510] text-mist mb-2">
             Was the delivery slip or threat successfully mitigated?
           </label>
           <div className="grid grid-cols-2 gap-2">
@@ -374,10 +374,10 @@ export function OutcomeModal({ isOpen, onClose, riskId, onConfirm }: OutcomeModa
                 key={opt.id}
                 type="button"
                 onClick={() => setResult(opt.id as any)}
-                className={`p-3 rounded-lg border text-xs font-medium text-left transition-all ${
+                className={`p-3 rounded-[6px] border text-caption font-[510] text-left transition-colors ${
                   result === opt.id
-                    ? "bg-indigo-600/20 border-indigo-500 text-indigo-300 font-semibold"
-                    : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-700"
+                    ? "bg-carbon border-acid-lime text-paper"
+                    : "bg-void border-graphite text-fog hover:border-smoke"
                 }`}
               >
                 {opt.label}
@@ -387,7 +387,7 @@ export function OutcomeModal({ isOpen, onClose, riskId, onConfirm }: OutcomeModa
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-zinc-300 mb-1">
+          <label className="block text-caption font-[510] text-mist mb-1">
             Outcome Comment (Optional)
           </label>
           <textarea
@@ -395,11 +395,11 @@ export function OutcomeModal({ isOpen, onClose, riskId, onConfirm }: OutcomeModa
             onChange={(e) => setComment(e.target.value)}
             rows={2}
             placeholder="e.g. Action unblocked 3 tickets and sprint landed on time."
-            className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
           />
         </div>
 
-        <div className="flex items-center justify-end gap-2 pt-4 border-t border-zinc-800">
+        <div className="flex items-center justify-end gap-2 pt-4 border-t border-graphite">
           <Button variant="outline" size="sm" type="button" onClick={onClose}>
             Cancel
           </Button>

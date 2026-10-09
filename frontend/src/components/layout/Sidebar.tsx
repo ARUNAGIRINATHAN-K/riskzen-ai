@@ -9,7 +9,6 @@ import {
   FileText,
   Folder,
   Layers,
-  Settings,
   Shield,
   Sliders,
   TrendingUp,
@@ -68,34 +67,38 @@ export function Sidebar({ projectId, projectName }: SidebarProps) {
       ];
 
   return (
-    <aside className="w-64 shrink-0 flex flex-col border-r border-zinc-800 bg-zinc-950/80 backdrop-blur-xl h-screen sticky top-0 z-40">
+    <aside className="w-64 shrink-0 flex flex-col border-r border-graphite bg-void h-screen sticky top-0 z-40 select-none">
       {/* Brand Header */}
-      <div className="h-16 px-6 flex items-center gap-3 border-b border-zinc-800/80">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center shadow-md shadow-indigo-600/30">
-          <Shield className="w-4 h-4 text-white" />
-        </div>
-        <div>
-          <span className="text-base font-bold tracking-tight text-white flex items-center gap-1.5">
-            RiskZen <span className="text-[10px] uppercase font-semibold px-1.5 py-0.2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded">AI</span>
+      <div className="h-14 px-5 flex items-center justify-between border-b border-graphite">
+        <Link href="/projects" className="flex items-center gap-2.5 group">
+          <div className="w-6 h-6 rounded-[6px] bg-carbon border border-graphite flex items-center justify-center text-paper group-hover:border-smoke transition-colors">
+            <Shield className="w-3.5 h-3.5 text-paper" />
+          </div>
+          <span className="text-body-sm font-[510] tracking-[-0.012em] text-paper flex items-center gap-1.5">
+            RiskZen
+            <span className="text-micro font-[510] px-1 py-0.2 bg-[rgba(228,242,34,0.12)] text-acid-lime border border-[rgba(228,242,34,0.25)] rounded-[4px]">
+              AI
+            </span>
           </span>
-          <span className="text-[11px] text-zinc-500 block -mt-0.5">Early Warning System</span>
-        </div>
+        </Link>
       </div>
 
-      {/* Project Context Switcher */}
+      {/* Active Project Card / Switcher */}
       {projectId && (
-        <div className="px-4 py-3 border-b border-zinc-800/60 bg-zinc-900/40">
+        <div className="px-3 py-2.5 border-b border-graphite bg-carbon/50">
           <Link
             href="/projects"
-            className="flex items-center justify-between group p-2 rounded-lg hover:bg-zinc-800/50 transition-colors"
+            className="flex items-center justify-between group p-2 rounded-[6px] hover:bg-carbon border border-transparent hover:border-graphite transition-all"
           >
             <div className="truncate">
-              <span className="text-[10px] uppercase tracking-wider text-zinc-500 block font-semibold">Active Project</span>
-              <span className="text-xs font-medium text-zinc-200 group-hover:text-indigo-400 transition-colors truncate block">
+              <span className="text-micro font-[510] text-fog uppercase tracking-wider block">
+                Active Project
+              </span>
+              <span className="text-caption font-[510] text-mist group-hover:text-paper transition-colors truncate block">
                 {projectName || "Project Dashboard"}
               </span>
             </div>
-            <span className="text-[10px] text-zinc-400 group-hover:text-zinc-200 bg-zinc-800 px-1.5 py-0.5 rounded">
+            <span className="text-micro font-normal text-fog group-hover:text-mist bg-graphite/60 px-1.5 py-0.5 rounded-[4px]">
               Switch
             </span>
           </Link>
@@ -103,7 +106,7 @@ export function Sidebar({ projectId, projectName }: SidebarProps) {
       )}
 
       {/* Navigation List */}
-      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+      <nav className="flex-1 px-3 py-3 space-y-0.5 overflow-y-auto">
         {navItems.map((item) => {
           const isActive = item.exact
             ? pathname === item.href
@@ -114,13 +117,13 @@ export function Sidebar({ projectId, projectName }: SidebarProps) {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-150",
+                "flex items-center gap-2.5 px-2.5 py-1.5 rounded-[6px] text-caption transition-colors duration-150 tracking-[-0.011em]",
                 isActive
-                  ? "bg-indigo-600/15 text-indigo-400 border border-indigo-500/30 font-semibold shadow-sm"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/60"
+                  ? "bg-carbon text-paper font-[510] border border-graphite shadow-sm"
+                  : "text-fog hover:text-mist hover:bg-[rgba(255,255,255,0.03)]"
               )}
             >
-              <span className={cn(isActive ? "text-indigo-400" : "text-zinc-500")}>
+              <span className={cn(isActive ? "text-paper" : "text-ash")}>
                 {item.icon}
               </span>
               <span>{item.label}</span>
@@ -129,10 +132,13 @@ export function Sidebar({ projectId, projectName }: SidebarProps) {
         })}
       </nav>
 
-      {/* Footer System Info */}
-      <div className="p-4 border-t border-zinc-800/80 text-[11px] text-zinc-500 flex items-center justify-between">
-        <span>Deterministic + LangGraph</span>
-        <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" title="System Online" />
+      {/* Footer System Status */}
+      <div className="p-3.5 border-t border-graphite text-micro text-ash flex items-center justify-between">
+        <span className="font-mono">LangGraph Engine</span>
+        <div className="flex items-center gap-1.5 text-fog">
+          <span className="w-1.5 h-1.5 rounded-full bg-pulse-green animate-pulse-dot" />
+          <span>Active</span>
+        </div>
       </div>
     </aside>
   );

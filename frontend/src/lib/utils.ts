@@ -38,36 +38,41 @@ export function getSeverityBadge(severity: RiskSeverity): {
   bg: string;
   text: string;
   border: string;
+  dot: string;
 } {
   switch (severity) {
     case "critical":
       return {
         label: "Critical",
-        bg: "bg-red-500/10",
-        text: "text-red-500",
-        border: "border-red-500/30",
+        bg: "bg-[rgba(235,87,87,0.10)]",
+        text: "text-coral-red",
+        border: "border-[rgba(235,87,87,0.25)]",
+        dot: "bg-coral-red",
       };
     case "high":
       return {
         label: "High",
-        bg: "bg-amber-500/10",
-        text: "text-amber-500",
-        border: "border-amber-500/30",
+        bg: "bg-[rgba(228,242,34,0.08)]",
+        text: "text-acid-lime",
+        border: "border-[rgba(228,242,34,0.25)]",
+        dot: "bg-acid-lime",
       };
     case "medium":
       return {
         label: "Medium",
-        bg: "bg-yellow-500/10",
-        text: "text-yellow-500",
-        border: "border-yellow-500/30",
+        bg: "bg-[rgba(139,92,246,0.10)]",
+        text: "text-lavender",
+        border: "border-[rgba(139,92,246,0.25)]",
+        dot: "bg-lavender",
       };
     case "low":
     default:
       return {
         label: "Low",
-        bg: "bg-emerald-500/10",
-        text: "text-emerald-500",
-        border: "border-emerald-500/30",
+        bg: "bg-[rgba(39,166,68,0.10)]",
+        text: "text-pulse-green",
+        border: "border-[rgba(39,166,68,0.25)]",
+        dot: "bg-pulse-green",
       };
   }
 }
@@ -77,18 +82,49 @@ export function getHealthBadge(health: ProjectHealth): {
   bg: string;
   text: string;
   dot: string;
+  border: string;
 } {
   switch (health) {
     case "green":
-      return { label: "Healthy", bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-400" };
+      return {
+        label: "Healthy",
+        bg: "bg-[rgba(39,166,68,0.10)]",
+        text: "text-pulse-green",
+        dot: "bg-pulse-green",
+        border: "border-[rgba(39,166,68,0.25)]",
+      };
     case "yellow":
-      return { label: "Caution", bg: "bg-yellow-500/10", text: "text-yellow-400", dot: "bg-yellow-400" };
+      return {
+        label: "Caution",
+        bg: "bg-[rgba(139,92,246,0.10)]",
+        text: "text-lavender",
+        dot: "bg-lavender",
+        border: "border-[rgba(139,92,246,0.25)]",
+      };
     case "orange":
-      return { label: "At Risk", bg: "bg-amber-500/10", text: "text-amber-400", dot: "bg-amber-400" };
+      return {
+        label: "At Risk",
+        bg: "bg-[rgba(228,242,34,0.08)]",
+        text: "text-acid-lime",
+        dot: "bg-acid-lime",
+        border: "border-[rgba(228,242,34,0.25)]",
+      };
     case "red":
-      return { label: "Critical", bg: "bg-red-500/10", text: "text-red-400", dot: "bg-red-400" };
+      return {
+        label: "Critical",
+        bg: "bg-[rgba(235,87,87,0.10)]",
+        text: "text-coral-red",
+        dot: "bg-coral-red",
+        border: "border-[rgba(235,87,87,0.25)]",
+      };
     default:
-      return { label: "Unknown", bg: "bg-zinc-500/10", text: "text-zinc-400", dot: "bg-zinc-400" };
+      return {
+        label: "Unknown",
+        bg: "bg-[rgba(255,255,255,0.05)]",
+        text: "text-fog",
+        dot: "bg-fog",
+        border: "border-graphite",
+      };
   }
 }
 

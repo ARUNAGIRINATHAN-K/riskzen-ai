@@ -22,45 +22,47 @@ export function QuickStats({
       label: "Critical & High Risks",
       value: criticalCount + highCount,
       sublabel: `${criticalCount} Critical, ${highCount} High`,
-      icon: <AlertTriangle className="w-5 h-5 text-rose-400" />,
-      highlight: criticalCount > 0 ? "border-rose-500/30" : "border-zinc-800",
+      icon: <AlertTriangle className="w-4 h-4 text-coral-red" />,
+      border: criticalCount > 0 ? "border-[rgba(235,87,87,0.3)]" : "border-graphite",
     },
     {
-      label: "Pending Mitigation Actions",
+      label: "Pending Actions",
       value: openActionsCount,
       sublabel: `${overdueActionsCount} Overdue SLA`,
-      icon: <Layers className="w-5 h-5 text-indigo-400" />,
-      highlight: overdueActionsCount > 0 ? "border-amber-500/30" : "border-zinc-800",
+      icon: <Layers className="w-4 h-4 text-acid-lime" />,
+      border: overdueActionsCount > 0 ? "border-[rgba(228,242,34,0.3)]" : "border-graphite",
     },
     {
       label: "Active Milestones",
       value: upcomingMilestonesCount,
       sublabel: "Target deliveries tracked",
-      icon: <Clock className="w-5 h-5 text-emerald-400" />,
-      highlight: "border-zinc-800",
+      icon: <Clock className="w-4 h-4 text-pulse-green" />,
+      border: "border-graphite",
     },
     {
       label: "Agent Governance",
       value: "Human-in-Loop",
       sublabel: "Zero auto-actions without PM",
-      icon: <Shield className="w-5 h-5 text-purple-400" />,
-      highlight: "border-zinc-800",
+      icon: <Shield className="w-4 h-4 text-iris-violet" />,
+      border: "border-graphite",
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
       {stats.map((stat, i) => (
-        <Card key={i} className={`p-4 ${stat.highlight} bg-zinc-900/60`}>
+        <Card key={i} className={`p-4 border ${stat.border} bg-carbon rounded-[12px]`}>
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-zinc-400">{stat.label}</span>
-            <div className="p-2 rounded-lg bg-zinc-800/60 border border-zinc-700/40">
+            <span className="text-caption font-normal text-fog">{stat.label}</span>
+            <div className="p-1.5 rounded-[6px] bg-void border border-graphite">
               {stat.icon}
             </div>
           </div>
           <div className="mt-2">
-            <span className="text-2xl font-bold text-white tracking-tight">{stat.value}</span>
-            <span className="text-[11px] text-zinc-400 block mt-0.5">{stat.sublabel}</span>
+            <span className="text-subheading font-mono font-[510] text-paper tracking-[-0.288px]">
+              {stat.value}
+            </span>
+            <span className="text-micro text-ash block mt-0.5">{stat.sublabel}</span>
           </div>
         </Card>
       ))}

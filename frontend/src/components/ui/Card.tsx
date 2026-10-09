@@ -4,30 +4,28 @@ import { cn } from "@/lib/utils";
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   hoverEffect?: boolean;
-  glow?: "indigo" | "rose" | "amber" | "emerald" | "none";
+  variant?: "default" | "subtle" | "elevated";
 }
 
 export function Card({
   children,
   hoverEffect = false,
-  glow = "none",
+  variant = "default",
   className,
   ...props
 }: CardProps) {
-  const glowStyles = {
-    none: "",
-    indigo: "hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/10",
-    rose: "hover:border-rose-500/40 hover:shadow-lg hover:shadow-rose-500/10",
-    amber: "hover:border-amber-500/40 hover:shadow-lg hover:shadow-amber-500/10",
-    emerald: "hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/10",
+  const variantStyles = {
+    default: "bg-carbon border border-graphite rounded-[12px] p-6 shadow-sm",
+    subtle: "bg-[rgba(255,255,255,0.02)] border border-graphite/50 rounded-[6px] p-3.5",
+    elevated: "bg-obsidian border border-smoke/60 rounded-[12px] p-6 shadow-md",
   };
 
   return (
     <div
       className={cn(
-        "rounded-xl border border-zinc-800 bg-zinc-900/70 backdrop-blur-md p-5 text-zinc-100 transition-all duration-200",
-        hoverEffect && "hover:-translate-y-0.5 hover:bg-zinc-900/90",
-        glowStyles[glow],
+        "text-mist transition-colors duration-150",
+        variantStyles[variant],
+        hoverEffect && "hover:border-smoke hover:bg-carbon/90",
         className
       )}
       {...props}
@@ -51,8 +49,8 @@ export function CardHeader({
   return (
     <div className={cn("flex items-start justify-between gap-4 mb-4", className)}>
       <div>
-        <h3 className="text-base font-semibold text-zinc-100 tracking-tight">{title}</h3>
-        {subtitle && <p className="text-xs text-zinc-400 mt-0.5">{subtitle}</p>}
+        <h3 className="text-body-sm font-[510] text-paper tracking-[-0.011em]">{title}</h3>
+        {subtitle && <p className="text-label text-fog mt-0.5">{subtitle}</p>}
       </div>
       {action && <div className="shrink-0">{action}</div>}
     </div>

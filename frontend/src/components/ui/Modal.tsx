@@ -48,33 +48,37 @@ export function Modal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-void/85 backdrop-blur-[2px] transition-opacity"
         onClick={onClose}
       />
 
       {/* Modal Dialog */}
       <div
         className={cn(
-          "relative w-full rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-zinc-100 shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-150",
+          "relative w-full rounded-[12px] border border-graphite bg-carbon p-6 text-mist shadow-xl z-10 animate-fade-in",
           widthClasses[maxWidth]
         )}
       >
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
-            <h2 className="text-lg font-semibold tracking-tight text-zinc-100">{title}</h2>
-            {description && <p className="text-xs text-zinc-400 mt-1">{description}</p>}
+            <h2 className="text-body-lg font-[510] text-paper tracking-[-0.012em]">{title}</h2>
+            {description && <p className="text-caption text-fog mt-0.5">{description}</p>}
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 transition-colors"
+            className="rounded-[6px] p-1 text-fog hover:bg-graphite hover:text-paper transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="py-2 text-sm text-zinc-300">{children}</div>
+        <div className="py-2 text-caption text-mist">{children}</div>
 
-        {footer && <div className="mt-6 flex items-center justify-end gap-3 pt-4 border-t border-zinc-800/80">{footer}</div>}
+        {footer && (
+          <div className="mt-6 flex items-center justify-end gap-2.5 pt-4 border-t border-graphite">
+            {footer}
+          </div>
+        )}
       </div>
     </div>
   );

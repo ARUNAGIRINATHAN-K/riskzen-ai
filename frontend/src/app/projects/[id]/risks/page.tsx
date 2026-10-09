@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { AlertTriangle, RefreshCw, Shield, Sparkles } from "@/components/icons";
+import { Shield, Sparkles } from "@/components/icons";
 import { AppShell } from "@/components/layout/AppShell";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { RiskCard } from "@/components/risks/RiskCard";
@@ -91,18 +91,18 @@ export default function RisksListPage() {
         ]}
         actions={
           <Button
-            variant="gradient"
+            variant="primary"
             size="md"
             onClick={handleEvaluate}
             isLoading={isEvaluating}
           >
-            <Sparkles className="w-4 h-4" />
+            <Sparkles className="w-3.5 h-3.5" />
             Evaluate Risks Now
           </Button>
         }
       />
 
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Filters Bar */}
         <RiskFilters
           category={category}
@@ -117,7 +117,7 @@ export default function RisksListPage() {
 
         {/* Risks Grid */}
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
             <CardSkeleton />
             <CardSkeleton />
             <CardSkeleton />
@@ -125,7 +125,7 @@ export default function RisksListPage() {
           </div>
         ) : filteredRisks.length === 0 ? (
           <EmptyState
-            icon={<Shield className="w-10 h-10 text-emerald-400" />}
+            icon={<Shield className="w-8 h-8 text-pulse-green" />}
             title="No Risks Matching Active Filters"
             description="All active work items and milestones within the selected filter criteria are healthy."
             action={
@@ -146,7 +146,7 @@ export default function RisksListPage() {
             }
           />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
             {filteredRisks.map((risk) => (
               <RiskCard key={risk.id} risk={risk} projectId={projectId} />
             ))}

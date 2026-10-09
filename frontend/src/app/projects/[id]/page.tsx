@@ -74,9 +74,9 @@ export default function ProjectDashboardPage() {
       onRefresh={fetchDashboardData}
     >
       {loading ? (
-        <div className="space-y-6">
+        <div className="space-y-4">
           <CardSkeleton />
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-4 gap-3">
             <CardSkeleton />
             <CardSkeleton />
             <CardSkeleton />
@@ -85,7 +85,7 @@ export default function ProjectDashboardPage() {
           <CardSkeleton />
         </div>
       ) : (
-        <div className="space-y-8">
+        <div className="space-y-6">
           {/* Top Health Card */}
           <HealthCard
             health={project?.health || "green"}
@@ -112,7 +112,7 @@ export default function ProjectDashboardPage() {
           <RiskCategoryDistribution categories={summary?.category_summaries || {}} />
 
           {/* Milestones & Dependencies Split */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <MilestoneTimeline milestones={milestones} />
             <DependencySection dependencies={dependencies} />
           </div>

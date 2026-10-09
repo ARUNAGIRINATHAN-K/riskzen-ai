@@ -1,5 +1,5 @@
 import React from "react";
-import { Activity, Bot, Check, CheckCircle, FileText, Layers, Shield, Sliders, X } from "@/components/icons";
+import { Activity, Bot, Check, CheckCircle, Shield, Sliders, X } from "@/components/icons";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { formatDateTime } from "@/lib/utils";
@@ -13,19 +13,19 @@ export function AuditTimeline({ logs }: AuditTimelineProps) {
   const getEventIcon = (eventType: string) => {
     switch (eventType) {
       case "recommendation_approved":
-        return <Check className="w-4 h-4 text-emerald-400" />;
+        return <Check className="w-3.5 h-3.5 text-pulse-green" />;
       case "recommendation_modified":
-        return <Sliders className="w-4 h-4 text-sky-400" />;
+        return <Sliders className="w-3.5 h-3.5 text-signal-teal" />;
       case "recommendation_dismissed":
-        return <X className="w-4 h-4 text-rose-400" />;
+        return <X className="w-3.5 h-3.5 text-coral-red" />;
       case "risk_investigated":
-        return <Bot className="w-4 h-4 text-purple-400" />;
+        return <Bot className="w-3.5 h-3.5 text-iris-violet" />;
       case "action_completed":
-        return <CheckCircle className="w-4 h-4 text-emerald-400" />;
+        return <CheckCircle className="w-3.5 h-3.5 text-pulse-green" />;
       case "outcome_recorded":
-        return <Shield className="w-4 h-4 text-indigo-400" />;
+        return <Shield className="w-3.5 h-3.5 text-acid-lime" />;
       default:
-        return <Activity className="w-4 h-4 text-zinc-400" />;
+        return <Activity className="w-3.5 h-3.5 text-fog" />;
     }
   };
 
@@ -37,39 +37,39 @@ export function AuditTimeline({ logs }: AuditTimelineProps) {
       />
 
       {logs.length === 0 ? (
-        <p className="text-xs text-zinc-400 py-6 text-center">
+        <p className="text-caption text-fog py-6 text-center">
           No audit entries recorded yet.
         </p>
       ) : (
-        <div className="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-zinc-800">
+        <div className="relative pl-6 space-y-4 before:absolute before:left-2.5 before:top-3 before:bottom-3 before:w-[1px] before:bg-graphite">
           {logs.map((log) => (
             <div key={log.id} className="relative group">
               {/* Dot icon */}
-              <div className="absolute -left-6 top-0.5 w-6 h-6 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center shrink-0">
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-carbon border border-graphite flex items-center justify-center shrink-0">
                 {getEventIcon(log.event_type)}
               </div>
 
-              <div className="p-3.5 rounded-xl border border-zinc-800/80 bg-zinc-950/60 space-y-1.5">
+              <div className="p-3 rounded-[6px] border border-graphite bg-void space-y-1">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-semibold text-zinc-100 uppercase tracking-wide">
+                    <span className="text-caption font-[510] text-mist uppercase tracking-wide">
                       {log.event_type.replace(/_/g, " ")}
                     </span>
                     <Badge variant="outline" size="sm">
                       by {log.actor || "System"}
                     </Badge>
                   </div>
-                  <span className="text-[11px] text-zinc-500 font-mono">
+                  <span className="text-micro text-fog font-mono">
                     {formatDateTime(log.created_at)}
                   </span>
                 </div>
 
                 {log.details && (
-                  <div className="pt-1 text-xs text-zinc-400">
+                  <div className="pt-1 text-caption text-fog">
                     {Object.entries(log.details).map(([k, v]) => (
-                      <div key={k} className="flex items-start gap-1.5 text-[11px]">
-                        <span className="text-zinc-500 capitalize">{k.replace(/_/g, " ")}:</span>
-                        <span className="text-zinc-300 font-medium truncate max-w-lg">
+                      <div key={k} className="flex items-start gap-1.5 text-micro">
+                        <span className="text-ash capitalize">{k.replace(/_/g, " ")}:</span>
+                        <span className="text-mist font-[510] truncate max-w-lg">
                           {typeof v === "object" ? JSON.stringify(v) : String(v)}
                         </span>
                       </div>

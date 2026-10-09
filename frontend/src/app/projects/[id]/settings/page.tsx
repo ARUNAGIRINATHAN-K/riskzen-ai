@@ -56,12 +56,12 @@ export default function ProjectSettingsPage() {
       />
 
       {loading ? (
-        <div className="space-y-6">
+        <div className="space-y-4">
           <CardSkeleton />
           <CardSkeleton />
         </div>
       ) : (
-        <div className="space-y-8">
+        <div className="space-y-6">
           <ThresholdsForm
             projectId={projectId}
             initialThresholds={thresholds}

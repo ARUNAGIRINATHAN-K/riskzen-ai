@@ -21,7 +21,7 @@ export function AppShell({
   children,
 }: AppShellProps) {
   return (
-    <div className="min-h-screen flex bg-zinc-950 text-zinc-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
+    <div className="min-h-screen flex bg-void text-mist font-sans">
       <Sidebar projectId={projectId} projectName={projectName} />
       <div className="flex-1 flex flex-col min-w-0">
         <Header
@@ -30,7 +30,7 @@ export function AppShell({
           health={health}
           onRefresh={onRefresh}
         />
-        <main className="flex-1 p-8 max-w-7xl w-full mx-auto animate-in fade-in duration-200">
+        <main className="flex-1 p-6 md:p-8 max-w-[1200px] w-full mx-auto animate-fade-in">
           {children}
         </main>
       </div>

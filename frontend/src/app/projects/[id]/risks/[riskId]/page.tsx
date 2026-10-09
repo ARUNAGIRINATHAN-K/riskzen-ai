@@ -3,13 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import {
-  AlertTriangle,
-  Bot,
-  CheckCircle,
-  Clock,
   Shield,
   Sparkles,
-  User,
 } from "@/components/icons";
 import { AppShell } from "@/components/layout/AppShell";
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -25,7 +20,7 @@ import { RiskEvidenceViewer } from "@/components/risks/RiskEvidenceViewer";
 import { RootCauseSection } from "@/components/risks/RootCauseSection";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Card, CardHeader } from "@/components/ui/Card";
+import { Card } from "@/components/ui/Card";
 import { CardSkeleton } from "@/components/ui/Skeleton";
 import { api } from "@/lib/api";
 import { formatDate, getCategoryLabel, getSeverityBadge } from "@/lib/utils";
@@ -147,17 +142,17 @@ export default function RiskDetailPage() {
               size="md"
               onClick={() => setModalType("outcome")}
             >
-              <Shield className="w-4 h-4 text-indigo-400" />
+              <Shield className="w-3.5 h-3.5 text-mist" />
               Record Outcome
             </Button>
 
             <Button
-              variant="gradient"
+              variant="primary"
               size="md"
               onClick={handleInvestigate}
               isLoading={isInvestigating}
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-3.5 h-3.5" />
               Run Agent Investigation
             </Button>
           </div>
@@ -165,18 +160,18 @@ export default function RiskDetailPage() {
       />
 
       {loading || !risk ? (
-        <div className="space-y-6">
+        <div className="space-y-4">
           <CardSkeleton />
           <CardSkeleton />
         </div>
       ) : (
-        <div className="space-y-8">
+        <div className="space-y-6">
           {/* Risk Overview Header Card */}
-          <Card className="p-6 border-zinc-800 bg-zinc-900/80">
+          <Card className="p-5 border-graphite bg-carbon rounded-[12px] shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex flex-wrap items-center gap-2.5">
+              <div className="flex flex-wrap items-center gap-2">
                 <span
-                  className={`text-xs uppercase font-bold px-3 py-1 rounded-full border ${sevBadge?.bg} ${sevBadge?.text} ${sevBadge?.border}`}
+                  className={`text-micro uppercase font-normal px-2 py-0.5 rounded-[4px] border ${sevBadge?.bg} ${sevBadge?.text} ${sevBadge?.border}`}
                 >
                   {risk.severity} Severity ({Math.round(risk.propensity_score * 100)}%)
                 </span>
@@ -190,13 +185,13 @@ export default function RiskDetailPage() {
                 </Badge>
               </div>
 
-              <div className="flex items-center gap-4 text-xs text-zinc-400">
+              <div className="flex items-center gap-4 text-micro text-fog font-mono">
                 <span>Detected: {formatDate(risk.created_at)}</span>
-                <span>Signal: <code className="font-mono text-zinc-300">{risk.signal_type}</code></span>
+                <span>Signal: <code className="text-mist">{risk.signal_type}</code></span>
               </div>
             </div>
 
-            <p className="text-sm text-zinc-300 mt-4 leading-relaxed">
+            <p className="text-body-sm text-paper mt-3.5 leading-relaxed font-normal">
               {risk.description}
             </p>
           </Card>
@@ -209,24 +204,24 @@ export default function RiskDetailPage() {
           />
 
           {/* Mitigation Recommendations Section */}
-          <div className="space-y-4">
+          <div className="space-y-3.5">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-bold text-white tracking-tight">
+                <h3 className="text-body-sm font-[510] text-paper tracking-[-0.011em]">
                   Proposed Mitigation Actions ({recommendations.length})
                 </h3>
-                <p className="text-xs text-zinc-400 mt-0.5">
+                <p className="text-caption text-fog mt-0.5">
                   Actionable mitigation interventions requiring PM approval before execution
                 </p>
               </div>
             </div>
 
             {recommendations.length === 0 ? (
-              <Card className="p-8 text-center text-zinc-400 text-xs">
+              <Card className="p-8 text-center text-fog text-caption bg-carbon border-graphite rounded-[12px]">
                 No recommendations generated yet. Click &quot;Run Agent Investigation&quot; above to synthesize mitigation options.
               </Card>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {recommendations.map((rec) => (
                   <RecommendationCard
                     key={rec.id}

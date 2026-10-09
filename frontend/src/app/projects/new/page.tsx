@@ -4,10 +4,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   ArrowRight,
-  CheckCircle,
   Folder,
   GitBranch,
-  Shield,
   Sparkles,
 } from "@/components/icons";
 import { AppShell } from "@/components/layout/AppShell";
@@ -45,7 +43,6 @@ export default function NewProjectPage() {
       setIsLoading(true);
       setError(null);
 
-      // Create project
       const proj = await api.createProject({
         name,
         key: key || name.substring(0, 4).toUpperCase(),
@@ -79,20 +76,17 @@ export default function NewProjectPage() {
             token: githubToken || undefined,
           },
         });
-        // Trigger initial sync
         await api.triggerSync(createdProject.id);
       } else if (sourceType === "csv_budget" && budgetFile) {
         await api.uploadBudgetCSV(createdProject.id, budgetFile);
       }
 
-      // Trigger initial risk evaluation
       try {
         await api.evaluateRisks(createdProject.id);
       } catch {
         // Safe fallback
       }
 
-      // Navigate to project dashboard
       router.push(`/projects/${createdProject.id}`);
     } catch (err: any) {
       setError(err.message || "Failed to configure data source");
@@ -117,33 +111,33 @@ export default function NewProjectPage() {
         <div className="flex items-center justify-between mb-8 px-4">
           <div className="flex items-center gap-3">
             <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${
-                step >= 1 ? "bg-indigo-600 text-white" : "bg-zinc-800 text-zinc-400"
+              className={`w-7 h-7 rounded-[6px] border flex items-center justify-center font-mono text-micro font-[510] ${
+                step >= 1 ? "bg-acid-lime text-void border-acid-lime" : "bg-carbon text-fog border-graphite"
               }`}
             >
               1
             </div>
-            <span className="text-sm font-semibold text-zinc-200">Project Details</span>
+            <span className="text-caption font-[510] text-paper">Project Details</span>
           </div>
 
-          <div className="flex-1 h-0.5 mx-4 bg-zinc-800" />
+          <div className="flex-1 h-[1px] mx-4 bg-graphite" />
 
           <div className="flex items-center gap-3">
             <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${
-                step >= 2 ? "bg-indigo-600 text-white" : "bg-zinc-800 text-zinc-400"
+              className={`w-7 h-7 rounded-[6px] border flex items-center justify-center font-mono text-micro font-[510] ${
+                step >= 2 ? "bg-acid-lime text-void border-acid-lime" : "bg-carbon text-fog border-graphite"
               }`}
             >
               2
             </div>
-            <span className={`text-sm font-semibold ${step >= 2 ? "text-zinc-200" : "text-zinc-500"}`}>
+            <span className={`text-caption font-[510] ${step >= 2 ? "text-paper" : "text-fog"}`}>
               Connect Telemetry
             </span>
           </div>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-300 font-medium">
+          <div className="mb-6 p-3 rounded-[6px] bg-void border border-[rgba(235,87,87,0.3)] text-caption text-coral-red font-[510]">
             {error}
           </div>
         )}
@@ -153,7 +147,7 @@ export default function NewProjectPage() {
           <Card className="p-6">
             <form onSubmit={handleCreateProject} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-zinc-200 mb-1.5">
+                <label className="block text-caption font-[510] text-mist mb-1">
                   Project Name *
                 </label>
                 <input
@@ -161,14 +155,14 @@ export default function NewProjectPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. NovaPay Mobile Checkout"
-                  className="w-full px-3.5 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-indigo-500"
+                  className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist placeholder-fog focus:outline-none focus:border-mist transition-colors"
                   required
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-200 mb-1.5">
+                  <label className="block text-caption font-[510] text-mist mb-1">
                     Project Key / Prefix
                   </label>
                   <input
@@ -176,18 +170,18 @@ export default function NewProjectPage() {
                     value={key}
                     onChange={(e) => setKey(e.target.value)}
                     placeholder="e.g. NOVA"
-                    className="w-full px-3.5 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-indigo-500"
+                    className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist placeholder-fog focus:outline-none focus:border-mist transition-colors font-mono"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-200 mb-1.5">
+                  <label className="block text-caption font-[510] text-mist mb-1">
                     Project Type
                   </label>
                   <select
                     value={projectType}
                     onChange={(e) => setProjectType(e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+                    className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
                   >
                     <option value="software">Software Engineering</option>
                     <option value="infrastructure">Cloud Infrastructure</option>
@@ -198,7 +192,7 @@ export default function NewProjectPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-zinc-200 mb-1.5">
+                <label className="block text-caption font-[510] text-mist mb-1">
                   Description
                 </label>
                 <textarea
@@ -206,14 +200,14 @@ export default function NewProjectPage() {
                   onChange={(e) => setDescription(e.target.value)}
                   rows={3}
                   placeholder="Describe key delivery goals and business milestones..."
-                  className="w-full px-3.5 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-indigo-500"
+                  className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist placeholder-fog focus:outline-none focus:border-mist transition-colors"
                 />
               </div>
 
               <div className="pt-4 flex justify-end">
                 <Button variant="primary" size="md" type="submit" isLoading={isLoading}>
                   Next: Connect Source
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Button>
               </div>
             </form>
@@ -225,49 +219,49 @@ export default function NewProjectPage() {
           <Card className="p-6">
             <form onSubmit={handleConnectSource} className="space-y-6">
               <div>
-                <label className="block text-xs font-semibold text-zinc-200 mb-2">
+                <label className="block text-caption font-[510] text-mist mb-2">
                   Select Primary Telemetry Source
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() => setSourceType("github")}
-                    className={`p-4 rounded-xl border flex items-center gap-3 transition-all ${
+                    className={`p-3.5 rounded-[6px] border flex items-center gap-3 transition-colors ${
                       sourceType === "github"
-                        ? "bg-indigo-600/15 border-indigo-500 text-white font-semibold"
-                        : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-700"
+                        ? "bg-void border-acid-lime text-paper"
+                        : "bg-void border-graphite text-fog hover:border-smoke"
                     }`}
                   >
-                    <GitBranch className="w-5 h-5 text-indigo-400 shrink-0" />
+                    <GitBranch className="w-4 h-4 text-paper shrink-0" />
                     <div className="text-left">
-                      <span className="text-xs block text-zinc-100">GitHub Connector</span>
-                      <span className="text-[11px] text-zinc-400">Issues, PRs, Milestones</span>
+                      <span className="text-caption font-[510] block text-paper">GitHub Connector</span>
+                      <span className="text-micro text-fog">Issues, PRs, Milestones</span>
                     </div>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setSourceType("csv_budget")}
-                    className={`p-4 rounded-xl border flex items-center gap-3 transition-all ${
+                    className={`p-3.5 rounded-[6px] border flex items-center gap-3 transition-colors ${
                       sourceType === "csv_budget"
-                        ? "bg-indigo-600/15 border-indigo-500 text-white font-semibold"
-                        : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-700"
+                        ? "bg-void border-acid-lime text-paper"
+                        : "bg-void border-graphite text-fog hover:border-smoke"
                     }`}
                   >
-                    <Folder className="w-5 h-5 text-emerald-400 shrink-0" />
+                    <Folder className="w-4 h-4 text-pulse-green shrink-0" />
                     <div className="text-left">
-                      <span className="text-xs block text-zinc-100">CSV Budget Importer</span>
-                      <span className="text-[11px] text-zinc-400">Planned vs Actual Spend</span>
+                      <span className="text-caption font-[510] block text-paper">CSV Budget Importer</span>
+                      <span className="text-micro text-fog">Planned vs Actual Spend</span>
                     </div>
                   </button>
                 </div>
               </div>
 
               {sourceType === "github" ? (
-                <div className="space-y-4 pt-2">
+                <div className="space-y-3 pt-2">
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-semibold text-zinc-300 mb-1">
+                      <label className="block text-caption font-[510] text-mist mb-1">
                         Repository Owner / Org *
                       </label>
                       <input
@@ -275,13 +269,13 @@ export default function NewProjectPage() {
                         value={repoOwner}
                         onChange={(e) => setRepoOwner(e.target.value)}
                         placeholder="e.g. facebook"
-                        className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+                        className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-zinc-300 mb-1">
+                      <label className="block text-caption font-[510] text-mist mb-1">
                         Repository Name *
                       </label>
                       <input
@@ -289,14 +283,14 @@ export default function NewProjectPage() {
                         value={repoName}
                         onChange={(e) => setRepoName(e.target.value)}
                         placeholder="e.g. react"
-                        className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+                        className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
                         required
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-300 mb-1">
+                    <label className="block text-caption font-[510] text-mist mb-1">
                       GitHub Personal Access Token (Optional for public repos)
                     </label>
                     <input
@@ -304,31 +298,31 @@ export default function NewProjectPage() {
                       value={githubToken}
                       onChange={(e) => setGithubToken(e.target.value)}
                       placeholder="ghp_..."
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500"
+                      className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors font-mono"
                     />
                   </div>
                 </div>
               ) : (
-                <div className="space-y-4 pt-2">
+                <div className="space-y-3 pt-2">
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-300 mb-1">
+                    <label className="block text-caption font-[510] text-mist mb-1">
                       Budget CSV File *
                     </label>
                     <input
                       type="file"
                       accept=".csv"
                       onChange={(e) => setBudgetFile(e.target.files?.[0] || null)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-xs text-zinc-200 focus:outline-none focus:border-indigo-500"
+                      className="w-full px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
                       required
                     />
-                    <p className="text-[11px] text-zinc-400 mt-1">
-                      Expected headers: <code className="font-mono text-zinc-300">month, category, planned, actual</code>
+                    <p className="text-micro text-fog mt-1">
+                      Expected headers: <code className="font-mono text-mist">month, category, planned, actual</code>
                     </p>
                   </div>
                 </div>
               )}
 
-              <div className="pt-4 border-t border-zinc-800 flex items-center justify-between">
+              <div className="pt-4 border-t border-graphite flex items-center justify-between">
                 <Button
                   variant="ghost"
                   size="sm"
@@ -339,7 +333,7 @@ export default function NewProjectPage() {
                 </Button>
 
                 <Button variant="primary" size="md" type="submit" isLoading={isLoading}>
-                  <Sparkles className="w-4 h-4" />
+                  <Sparkles className="w-3.5 h-3.5" />
                   Complete Setup & Ingest Data
                 </Button>
               </div>

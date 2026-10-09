@@ -3,13 +3,10 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
-  Activity,
   ArrowRight,
-  Folder,
   Plus,
   RefreshCw,
   Shield,
-  Sparkles,
 } from "@/components/icons";
 import { AppShell } from "@/components/layout/AppShell";
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -51,14 +48,14 @@ export default function ProjectsPage() {
         title="Software Engineering Projects"
         subtitle="Monitored delivery pipelines and AI early-warning risk systems"
         actions={
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" onClick={fetchProjects} disabled={loading}>
-              <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
+              <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
               Refresh
             </Button>
             <Link href="/projects/new">
               <Button variant="primary" size="md">
-                <Plus className="w-4 h-4" />
+                <Plus className="w-3.5 h-3.5" />
                 Connect New Project
               </Button>
             </Link>
@@ -67,15 +64,15 @@ export default function ProjectsPage() {
       />
 
       {error && (
-        <div className="mb-6 p-4 rounded-xl border border-rose-500/30 bg-rose-500/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="mb-6 p-4 rounded-[6px] border border-[rgba(235,87,87,0.3)] bg-[rgba(235,87,87,0.1)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3">
-            <div className="w-2 h-2 rounded-full bg-rose-400 mt-2 flex-shrink-0" />
+            <div className="w-2 h-2 rounded-full bg-coral-red mt-1.5 flex-shrink-0" />
             <div>
-              <h4 className="text-sm font-semibold text-rose-300">Backend Connection Error</h4>
-              <p className="text-xs text-rose-200/80 mt-1">{error}</p>
+              <h4 className="text-body-sm font-[510] text-coral-red">Backend Connection Error</h4>
+              <p className="text-caption text-fog mt-0.5">{error}</p>
             </div>
           </div>
-          <Button variant="outline" size="sm" onClick={fetchProjects} className="border-rose-500/40 text-rose-200 hover:bg-rose-500/20 flex-shrink-0">
+          <Button variant="outline" size="sm" onClick={fetchProjects} className="flex-shrink-0">
             <RefreshCw className="w-3.5 h-3.5" />
             Retry Connection
           </Button>
@@ -83,29 +80,29 @@ export default function ProjectsPage() {
       )}
 
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <CardSkeleton />
           <CardSkeleton />
           <CardSkeleton />
         </div>
       ) : projects.length === 0 && !error ? (
-        <div className="flex flex-col items-center justify-center p-16 text-center rounded-2xl border border-dashed border-zinc-800 bg-zinc-900/30">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-4">
-            <Shield className="w-6 h-6 text-indigo-400" />
+        <div className="flex flex-col items-center justify-center p-16 text-center rounded-[12px] border border-graphite bg-carbon/50">
+          <div className="w-10 h-10 rounded-[8px] bg-void border border-graphite flex items-center justify-center mb-4">
+            <Shield className="w-5 h-5 text-acid-lime" />
           </div>
-          <h3 className="text-base font-semibold text-zinc-100">No Monitored Projects</h3>
-          <p className="text-xs text-zinc-400 max-w-sm mt-1.5 mb-6">
+          <h3 className="text-body-sm font-[510] text-paper">No Monitored Projects</h3>
+          <p className="text-caption text-fog max-w-sm mt-1 mb-6">
             Connect a GitHub repository or financial budget CSV to enable deterministic risk detection and AI mitigation workflows.
           </p>
           <Link href="/projects/new">
             <Button variant="primary" size="md">
-              <Plus className="w-4 h-4" />
+              <Plus className="w-3.5 h-3.5" />
               Onboard First Project
             </Button>
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project) => {
             const healthBadge = getHealthBadge(project.health || "green");
 
@@ -113,14 +110,14 @@ export default function ProjectsPage() {
               <Card
                 key={project.id}
                 hoverEffect
-                className="p-6 flex flex-col justify-between border-zinc-800 bg-zinc-900/70"
+                className="p-5 flex flex-col justify-between border-graphite bg-carbon rounded-[12px] shadow-sm"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-3">
                     <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold border ${healthBadge.bg} ${healthBadge.text} border-current/20`}
+                      className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] text-micro font-normal border ${healthBadge.bg} ${healthBadge.text} ${healthBadge.border}`}
                     >
-                      <span className={`w-1.5 h-1.5 rounded-full ${healthBadge.dot}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${healthBadge.dot} animate-pulse-dot`} />
                       {healthBadge.label}
                     </span>
 
@@ -130,32 +127,32 @@ export default function ProjectsPage() {
                   </div>
 
                   <Link href={`/projects/${project.id}`} className="group block">
-                    <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">
+                    <h3 className="text-body-sm font-[510] text-paper group-hover:text-acid-lime transition-colors tracking-[-0.011em]">
                       {project.name}
                     </h3>
                   </Link>
 
-                  <p className="text-xs text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
+                  <p className="text-caption text-fog mt-1.5 line-clamp-2 leading-relaxed">
                     {project.description || "Active software delivery pipeline."}
                   </p>
 
                   {/* Project metadata */}
-                  <div className="mt-4 pt-4 border-t border-zinc-800/80 flex items-center justify-between text-[11px] text-zinc-400">
+                  <div className="mt-4 pt-3 border-t border-graphite flex items-center justify-between text-micro text-fog">
                     <span>Created: {formatDate(project.created_at)}</span>
-                    <span className="font-medium text-zinc-300">
+                    <span className="font-mono text-mist">
                       DQ Reliability: {project.data_quality_score ? `${Math.round(project.data_quality_score)}%` : "95%"}
                     </span>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-zinc-800 flex items-center justify-between">
-                  <span className="text-xs text-zinc-400">
-                    Type: <span className="text-zinc-200 capitalize">{project.project_type || "Software"}</span>
+                <div className="mt-5 pt-3 border-t border-graphite flex items-center justify-between">
+                  <span className="text-micro text-fog">
+                    Type: <span className="text-mist capitalize">{project.project_type || "Software"}</span>
                   </span>
 
                   <Link
                     href={`/projects/${project.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+                    className="inline-flex items-center gap-1 text-caption font-[510] text-mist hover:text-paper transition-colors"
                   >
                     Open Dashboard
                     <ArrowRight className="w-3.5 h-3.5" />

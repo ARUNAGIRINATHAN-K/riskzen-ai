@@ -1,5 +1,5 @@
 import React from "react";
-import { Filter, Search } from "@/components/icons";
+import { Search } from "@/components/icons";
 
 interface RiskFiltersProps {
   category: string;
@@ -23,16 +23,16 @@ export function RiskFilters({
   setSearch,
 }: RiskFiltersProps) {
   return (
-    <div className="p-4 rounded-xl border border-zinc-800 bg-zinc-900/60 flex flex-col md:flex-row items-center gap-3">
+    <div className="p-3 rounded-[12px] border border-graphite bg-carbon flex flex-col md:flex-row items-center gap-2.5">
       {/* Search Input */}
       <div className="relative flex-1 w-full">
-        <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+        <Search className="w-3.5 h-3.5 text-fog absolute left-3 top-1/2 -translate-y-1/2" />
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search risks by title, keyword, or signal..."
-          className="w-full pl-9 pr-4 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-indigo-500"
+          className="w-full pl-8 pr-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist placeholder-fog focus:outline-none focus:border-mist transition-colors"
         />
       </div>
 
@@ -40,7 +40,7 @@ export function RiskFilters({
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="w-full md:w-44 px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-xs text-zinc-200 focus:outline-none focus:border-indigo-500"
+        className="w-full md:w-44 px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
       >
         <option value="">All Categories</option>
         <option value="schedule">Schedule</option>
@@ -56,7 +56,7 @@ export function RiskFilters({
       <select
         value={severity}
         onChange={(e) => setSeverity(e.target.value)}
-        className="w-full md:w-36 px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-xs text-zinc-200 focus:outline-none focus:border-indigo-500"
+        className="w-full md:w-36 px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
       >
         <option value="">All Severities</option>
         <option value="critical">Critical</option>
@@ -69,7 +69,7 @@ export function RiskFilters({
       <select
         value={status}
         onChange={(e) => setStatus(e.target.value)}
-        className="w-full md:w-36 px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 text-xs text-zinc-200 focus:outline-none focus:border-indigo-500"
+        className="w-full md:w-36 px-3 py-1.5 rounded-[6px] bg-void border border-graphite text-caption text-mist focus:outline-none focus:border-mist transition-colors"
       >
         <option value="">All Statuses</option>
         <option value="active">Active</option>
