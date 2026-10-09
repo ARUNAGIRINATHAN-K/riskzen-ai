@@ -11,10 +11,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Planned
 
-- Project health dashboard and interactive frontend UI (Phase 4)
 - Historical replay, precision/recall measurement, and tuning (Phase 5)
+- Production deployment hardening and evaluation suite (Phase 6)
 
 ---
+
+## [0.4.0] — 2026-10-08 (Phase 4: User-Facing Dashboard)
+
+### Added
+
+- **Design System & Visual Architecture**:
+  - Dark-mode first UI with modern glassmorphism (`backdrop-blur`, subtle borders, curated HSL color palette).
+  - Custom SVG icon library (`components/icons`) with 30+ clean icons eliminating external icon bundle overhead.
+  - Reusable foundational UI component suite: `Badge`, `Button`, `Card`, `Modal`, `Skeleton`, `EmptyState`.
+  - Responsive app shell (`AppShell`, `Sidebar`, `Header`, `PageHeader`) with project switching and quick actions.
+- **Project Portfolio & Onboarding Views**:
+  - `GET /projects`: Project list view with risk level indicators, confidence ratings, active alert counts, and creation CTA.
+  - `GET /projects/new`: 2-step onboarding wizard supporting project configuration and GitHub / CSV budget source connection.
+- **Project Health Dashboard (`/projects/[id]`)**:
+  - Composite Project Health Card displaying overall rating (`Healthy`, `At Risk`, `Critical`), risk score %, AI confidence %, and telemetry data quality score.
+  - Quick stats overview of critical/high risks, pending actions, milestones on track, and governance audit records.
+  - 7-Category Risk Taxonomy distribution bars with real-time signal counts.
+  - Top prioritized risks section with inline severity badges and navigation to root-cause investigation.
+  - Milestone timeline progress tracker and critical blocker dependency chain viewer.
+- **Interactive Risk Radar (`/projects/[id]/risks`)**:
+  - Filterable risk radar with search, multi-category pills, severity selectors, and status tabs.
+  - On-demand "Run Risk Engine" trigger with instant UI refresh.
+- **AI Investigation & Recommendation Detail (`/projects/[id]/risks/[riskId]`)**:
+  - Comprehensive risk telemetry overview and signal evidence breakdown.
+  - LangGraph AI Root-Cause Analysis viewer with grounded citations and confidence scores.
+  - Real-time "Run AI Investigation" trigger executing the 5-node agent workflow.
+  - Mitigation Recommendations deck with interactive decision modals:
+    - **Approve Modal**: Convert recommendation into tracked mitigation action item.
+    - **Modify Modal**: Edit action title, description, assignee, and target deadline before approval.
+    - **Dismiss Modal**: Dismiss recommendation with recorded governance reason.
+    - **Snooze Modal**: Snooze recommendation for custom duration (24h, 48h, 7d).
+  - Post-mitigation Outcome Rating modal (Yes / Partially / No / Not sure) with user feedback capture.
+- **Mitigation Action Tracking Board (`/projects/[id]/actions`)**:
+  - Action list grouped by status (`open`, `in_progress`, `completed`, `cancelled`) with completion checkboxes and assignee pills.
+- **Weekly Risk Summary View (`/projects/[id]/summary`)**:
+  - Executive summary snapshot with category health radar and weekly recommendations digest.
+- **Governance & Audit Trail (`/projects/[id]/audit`)**:
+  - Chronological event ledger tracking AI investigations, human approvals, dismissals, modifications, and sync events.
+- **Project Settings & Sensitivity Controls (`/projects/[id]/settings`)**:
+  - Risk engine sensitivity threshold sliders with reset-to-defaults CTA.
+  - Data sources manager with connection status, sync triggers, and CSV budget uploader.
+- **Backend Enhancements**:
+  - Added `GET /api/v1/projects/{project_id}/audit` endpoint for audit log retrieval.
 
 ## [0.3.0] — 2026-10-07 (Phase 3: Agentic Investigation Layer)
 

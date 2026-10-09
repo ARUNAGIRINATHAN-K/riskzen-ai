@@ -144,3 +144,39 @@ async def list_data_sources(
     db: AsyncSession = Depends(get_db),
 ):
     return await ProjectService.list_data_sources(db, project_id)
+
+
+@router.get(
+    "/{project_id}/audit",
+    summary="List chronological audit events for a project",
+)
+async def get_project_audit(
+    project_id: uuid.UUID,
+    limit: int = Query(default=50, ge=1, le=200),
+    db: AsyncSession = Depends(get_db),
+):
+    from sqlalchemy import select
+    from app.models.audit import AuditLog
+
+    stmt = (
+        select(AuditLog)
+        .where(AuditLog.project_id == project_id)
+        .order_by(AuditLog.created_at.desc())
+        .limit(limit)
+    )
+    res = await db.execute(stmt)
+    logs = res.scalars().all()
+    return [
+        {
+            "id": str(log.id),
+            "project_id": str(log.project_id),
+            "event_type": log.event_type,
+            "entity_type": log.entity_type,
+            "entity_id": str(log.entity_id) if log.entity_id else "",
+            "actor": log.actor,
+            "details": log.details,
+            "created_at": log.created_at.isoformat() if log.created_at else "",
+        }
+        for log in logs
+    ]
+

@@ -672,12 +672,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.1 | Configure shadcn/ui component library | ☐ |
-| 4.2 | Set up design tokens: color palette, typography (Inter/Outfit), spacing | ☐ |
-| 4.3 | Build app shell: sidebar navigation, top bar, main content area | ☐ |
-| 4.4 | Implement dark/light mode toggle | ☐ |
-| 4.5 | Create reusable layout components: PageHeader, Card, StatusBadge | ☐ |
-| 4.6 | Set up API client with `fetch` / `axios` and type-safe hooks | ☐ |
+| 4.1 | Configure shadcn/ui component library | ☑ |
+| 4.2 | Set up design tokens: color palette, typography (Inter/Outfit), spacing | ☑ |
+| 4.3 | Build app shell: sidebar navigation, top bar, main content area | ☑ |
+| 4.4 | Implement dark/light mode toggle | ☑ |
+| 4.5 | Create reusable layout components: PageHeader, Card, StatusBadge | ☑ |
+| 4.6 | Set up API client with `fetch` / `axios` and type-safe hooks | ☑ |
 
 ---
 
@@ -685,12 +685,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.7 | Projects list page with health indicator per project | ☐ |
-| 4.8 | "New Project" flow: name, type, description | ☐ |
-| 4.9 | "Connect Source" flow: select GitHub / CSV, enter credentials | ☐ |
-| 4.10 | Connection status display (connected, syncing, error) | ☐ |
-| 4.11 | Initial data import progress indicator | ☐ |
-| 4.12 | Data coverage summary after import (work items, milestones, deps, quality %) | ☐ |
+| 4.7 | Projects list page with health indicator per project | ☑ |
+| 4.8 | "New Project" flow: name, type, description | ☑ |
+| 4.9 | "Connect Source" flow: select GitHub / CSV, enter credentials | ☑ |
+| 4.10 | Connection status display (connected, syncing, error) | ☑ |
+| 4.11 | Initial data import progress indicator | ☑ |
+| 4.12 | Data coverage summary after import (work items, milestones, deps, quality %) | ☑ |
 
 ---
 
@@ -698,11 +698,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.13 | Overall project health indicator (color-coded: green/yellow/orange/red) | ☐ |
-| 4.14 | Risk distribution chart (by category: schedule, dependency, scope, etc.) | ☐ |
-| 4.15 | Data quality score with breakdown | ☐ |
-| 4.16 | Last synced timestamp | ☐ |
-| 4.17 | Quick stats row: open risks, overdue actions, upcoming milestones | ☐ |
+| 4.13 | Overall project health indicator (color-coded: green/yellow/orange/red) | ☑ |
+| 4.14 | Risk distribution chart (by category: schedule, dependency, scope, etc.) | ☑ |
+| 4.15 | Data quality score with breakdown | ☑ |
+| 4.16 | Last synced timestamp | ☑ |
+| 4.17 | Quick stats row: open risks, overdue actions, upcoming milestones | ☑ |
 
 ---
 
@@ -710,11 +710,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.18 | "Top Emerging Risks" section — list of risk cards sorted by severity | ☐ |
-| 4.19 | Risk card component: severity badge, title, affected milestone, primary evidence point, recommended action CTA | ☐ |
-| 4.20 | "Milestone Forecast" section — timeline with health indicators | ☐ |
-| 4.21 | "Dependency Bottlenecks" section — blocked items and their blockers | ☐ |
-| 4.22 | "Overdue Actions" section — actions needing attention | ☐ |
+| 4.18 | "Top Emerging Risks" section — list of risk cards sorted by severity | ☑ |
+| 4.19 | Risk card component: severity badge, title, affected milestone, primary evidence point, recommended action CTA | ☑ |
+| 4.20 | "Milestone Forecast" section — timeline with health indicators | ☑ |
+| 4.21 | "Dependency Bottlenecks" section — blocked items and their blockers | ☑ |
+| 4.22 | "Overdue Actions" section — actions needing attention | ☑ |
 
 ---
 
@@ -722,12 +722,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.23 | Risk header: severity, category, confidence, status, detected date | ☐ |
-| 4.24 | "Potential Impact" section with affected milestones and work items | ☐ |
-| 4.25 | "Evidence" section — list of supporting signals with source references | ☐ |
-| 4.26 | "Contributing Factors" section — ranked root-cause list | ☐ |
-| 4.27 | "Risk Timeline" — severity changes over time (chart) | ☐ |
-| 4.28 | "Agent Explanation" — AI-generated narrative explanation | ☐ |
+| 4.23 | Risk header: severity, category, confidence, status, detected date | ☑ |
+| 4.24 | "Potential Impact" section with affected milestones and work items | ☑ |
+| 4.25 | "Evidence" section — list of supporting signals with source references | ☑ |
+| 4.26 | "Contributing Factors" section — ranked root-cause list | ☑ |
+| 4.27 | "Risk Timeline" — severity changes over time (chart) | ☑ |
+| 4.28 | "Agent Explanation" — AI-generated narrative explanation | ☑ |
 
 ---
 
@@ -735,12 +735,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.29 | "Recommended Actions" section with action cards | ☐ |
-| 4.30 | Each card: action description, rationale, suggested owner, urgency | ☐ |
-| 4.31 | Approval controls: Approve, Modify, Dismiss, Snooze buttons | ☐ |
-| 4.32 | Modify modal: edit action description, change owner/due date | ☐ |
-| 4.33 | Dismiss modal: require reason for dismissal | ☐ |
-| 4.34 | "Action History" section — past actions taken for this risk | ☐ |
+| 4.29 | "Recommended Actions" section with action cards | ☑ |
+| 4.30 | Each card: action description, rationale, suggested owner, urgency | ☑ |
+| 4.31 | Approval controls: Approve, Modify, Dismiss, Snooze buttons | ☑ |
+| 4.32 | Modify modal: edit action description, change owner/due date | ☑ |
+| 4.33 | Dismiss modal: require reason for dismissal | ☑ |
+| 4.34 | "Action History" section — past actions taken for this risk | ☑ |
 
 ---
 
@@ -750,10 +750,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.35 | Outcome prompt at milestone completion (Yes/Partially/No/Not sure) | ☐ |
-| 4.36 | Optional comment field with outcome | ☐ |
-| 4.37 | Alert-level feedback buttons: Relevant, Not relevant, Already known, Incorrect | ☐ |
-| 4.38 | Feedback confirmation toast notifications | ☐ |
+| 4.35 | Outcome prompt at milestone completion (Yes/Partially/No/Not sure) | ☑ |
+| 4.36 | Optional comment field with outcome | ☑ |
+| 4.37 | Alert-level feedback buttons: Relevant, Not relevant, Already known, Incorrect | ☑ |
+| 4.38 | Feedback confirmation toast notifications | ☑ |
 
 ---
 
@@ -761,11 +761,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.39 | Project settings page: monitoring categories toggles | ☐ |
-| 4.40 | Threshold configuration form per risk category | ☐ |
-| 4.41 | "Restore Defaults" option | ☐ |
-| 4.42 | Connected sources management (view status, reconnect, remove) | ☐ |
-| 4.43 | Manual sync trigger button | ☐ |
+| 4.39 | Project settings page: monitoring categories toggles | ☑ |
+| 4.40 | Threshold configuration form per risk category | ☑ |
+| 4.41 | "Restore Defaults" option | ☑ |
+| 4.42 | Connected sources management (view status, reconnect, remove) | ☑ |
+| 4.43 | Manual sync trigger button | ☑ |
 
 ---
 
@@ -773,10 +773,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.44 | Full risk list page with filters: severity, category, status, date range | ☐ |
-| 4.45 | Sort by: severity, detected date, last updated | ☐ |
-| 4.46 | Bulk actions: dismiss selected, snooze selected | ☐ |
-| 4.47 | Search within risk events | ☐ |
+| 4.44 | Full risk list page with filters: severity, category, status, date range | ☑ |
+| 4.45 | Sort by: severity, detected date, last updated | ☑ |
+| 4.46 | Bulk actions: dismiss selected, snooze selected | ☑ |
+| 4.47 | Search within risk events | ☑ |
 
 ---
 
@@ -784,11 +784,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.48 | Actions page: grouped by status (pending, in progress, completed, overdue) | ☐ |
-| 4.49 | Action detail: source risk, recommendation, owner, due date, status | ☐ |
-| 4.50 | Complete action button with optional outcome comment | ☐ |
-| 4.51 | Audit trail page: chronological log of all risk events, decisions, actions | ☐ |
-| 4.52 | Audit entry: timestamp, event type, details, user | ☐ |
+| 4.48 | Actions page: grouped by status (pending, in progress, completed, overdue) | ☑ |
+| 4.49 | Action detail: source risk, recommendation, owner, due date, status | ☑ |
+| 4.50 | Complete action button with optional outcome comment | ☑ |
+| 4.51 | Audit trail page: chronological log of all risk events, decisions, actions | ☑ |
+| 4.52 | Audit entry: timestamp, event type, details, user | ☑ |
 
 ---
 
@@ -796,10 +796,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.53 | Weekly summary page: new risks, resolved risks, risk counts by severity | ☐ |
-| 4.54 | Early warnings count | ☐ |
-| 4.55 | Actions completed / overdue this week | ☐ |
-| 4.56 | Comparison with previous week | ☐ |
+| 4.53 | Weekly summary page: new risks, resolved risks, risk counts by severity | ☑ |
+| 4.54 | Early warnings count | ☑ |
+| 4.55 | Actions completed / overdue this week | ☑ |
+| 4.56 | Comparison with previous week | ☑ |
 
 ---
 
@@ -807,12 +807,12 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.57 | Verify all pages render correctly on desktop (1440px, 1920px) | ☐ |
-| 4.58 | Verify all pages render acceptably on tablet (768px) | ☐ |
-| 4.59 | Add loading skeletons for all data-dependent components | ☐ |
-| 4.60 | Add empty states for all list views | ☐ |
-| 4.61 | Add error boundary and error display components | ☐ |
-| 4.62 | Micro-animations: card hover effects, status transitions, chart animations | ☐ |
+| 4.57 | Verify all pages render correctly on desktop (1440px, 1920px) | ☑ |
+| 4.58 | Verify all pages render acceptably on tablet (768px) | ☑ |
+| 4.59 | Add loading skeletons for all data-dependent components | ☑ |
+| 4.60 | Add empty states for all list views | ☑ |
+| 4.61 | Add error boundary and error display components | ☑ |
+| 4.62 | Micro-animations: card hover effects, status transitions, chart animations | ☑ |
 
 ---
 
@@ -822,10 +822,10 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.63 | Full user journey test: create project → connect GitHub → view dashboard | ☐ |
-| 4.64 | Full user journey test: risk appears → view detail → approve recommendation → action created | ☐ |
-| 4.65 | Full user journey test: complete action → record outcome → view audit trail | ☐ |
-| 4.66 | Test budget CSV upload → budget risk signals appear | ☐ |
+| 4.63 | Full user journey test: create project → connect GitHub → view dashboard | ☑ |
+| 4.64 | Full user journey test: risk appears → view detail → approve recommendation → action created | ☑ |
+| 4.65 | Full user journey test: complete action → record outcome → view audit trail | ☑ |
+| 4.66 | Test budget CSV upload → budget risk signals appear | ☑ |
 
 ---
 
@@ -833,11 +833,11 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.67 | Add proper `<title>` tags per page | ☐ |
-| 4.68 | Add meta descriptions | ☐ |
-| 4.69 | Verify heading hierarchy (single h1 per page) | ☐ |
-| 4.70 | Keyboard navigation for all interactive elements | ☐ |
-| 4.71 | ARIA labels for status indicators and charts | ☐ |
+| 4.67 | Add proper `<title>` tags per page | ☑ |
+| 4.68 | Add meta descriptions | ☑ |
+| 4.69 | Verify heading hierarchy (single h1 per page) | ☑ |
+| 4.70 | Keyboard navigation for all interactive elements | ☑ |
+| 4.71 | ARIA labels for status indicators and charts | ☑ |
 
 ---
 
@@ -845,23 +845,23 @@ riskzen-ai/
 
 | # | Task | Status |
 |---|---|---|
-| 4.72 | Verify all dashboard sections display correctly with real data | ☐ |
-| 4.73 | Screenshot all major views for documentation | ☐ |
-| 4.74 | Commit, tag `v0.4.0-dashboard` | ☐ |
+| 4.72 | Verify all dashboard sections display correctly with real data | ☑ |
+| 4.73 | Screenshot all major views for documentation | ☑ |
+| 4.74 | Commit, tag `v0.4.0-dashboard` | ☑ |
 
 ---
 
 ### Phase 4 — Exit Criteria
 
-- [ ] Project onboarding flow works end-to-end
-- [ ] Dashboard answers "what needs my attention today?" within seconds
-- [ ] Risk cards display severity, evidence, and recommended action
-- [ ] Risk detail page shows full investigation with evidence and root-cause analysis
-- [ ] Approve/Modify/Dismiss/Snooze controls work and are audited
-- [ ] Actions are trackable from creation to completion to outcome
-- [ ] Feedback can be submitted on every alert
-- [ ] Weekly summary view aggregates risk changes
-- [ ] UI has dark mode, responsive layout, loading states, and empty states
+- [x] Project onboarding flow works end-to-end
+- [x] Dashboard answers "what needs my attention today?" within seconds
+- [x] Risk cards display severity, evidence, and recommended action
+- [x] Risk detail page shows full investigation with evidence and root-cause analysis
+- [x] Approve/Modify/Dismiss/Snooze controls work and are audited
+- [x] Actions are trackable from creation to completion to outcome
+- [x] Feedback can be submitted on every alert
+- [x] Weekly summary view aggregates risk changes
+- [x] UI has dark mode, responsive layout, loading states, and empty states
 
 ---
 
